@@ -1,0 +1,37 @@
+body {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.meta_data_dropdown{
+
+      padding-top: 10px;
+      padding-right: 5px;
+      padding-bottom: 10px;
+      padding-left: 5px;
+
+}
+
+.axis_data_dropdown{
+  padding-top: 10px;
+  padding-right: 5px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+
+}
+
+
+.filter_labels{
+  text-align: right;
+  padding-top: 17px;
+  padding-right: 5px;
+  padding-bottom: 17px;
+  padding-left: 5px;
+}
+.heading{
+  padding-top: 17px;
+  padding-right: 5px;
+  padding-bottom: 17px;
+  padding-left: 5px;
+}
