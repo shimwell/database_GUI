@@ -5,7 +5,7 @@ import pprint
 import collections
 import pymongo
 from pymongo import MongoClient
-from bson.code import Code
+#from bson.code import Code
 import xlrd
 
 

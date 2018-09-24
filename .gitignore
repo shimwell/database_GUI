@@ -21,3 +21,6 @@ yarn-debug.log*
 yarn-error.log*
 
 *.pyc
+/a
+/database_creation_tools/a/
+/database_creation_tools/a

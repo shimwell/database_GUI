@@ -3,4 +3,4 @@ pymongo
 bson
 xlrd
 flask
-urllib
+flask_cors

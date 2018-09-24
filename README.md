@@ -7,6 +7,10 @@ A project that builds a NoSQL database from CSV or Excel files and dynamically c
   - Launch an interactive GUI that dynamically adapts to the fields and contents of your database.
   - Filter the contents of your database and produce interactive visualisations of the contents of your database.
 
+A short presentation on the design of the database_GUI is avaialbe [here].
+
+
+
 ### Tech
 * [React.js] - A JavaScript library for building user interfaces
 * [Plotly] - Modern Visualization for the Data Era
@@ -75,3 +79,6 @@ npm start
 ```
 
 At this stage your web browser should load and you should be able to use and interact with the GUI. If not try navigating to http://localhost:3000/
+
+
+[here]: <https://slides.com/shimwell/database_gui#/>
