@@ -12,3 +12,66 @@ A project that builds a NoSQL database from CSV or Excel files and dynamically c
 * [Plotly] - Modern Visualization for the Data Era
 * [MongoDB] - NoSQL database with JSON-like documents
 * [Python] - Programming that lets you work quickly and easily integrate systems  
+
+### Installation
+
+You will need to install MongoDB by following their instructions https://docs.mongodb.com/manual/administration/install-community/
+
+Then NPM, react and python libraries will all need installing. Here are the required commands for Ubuntu.
+
+
+```
+
+git clone https://github.com/Shimwell/database_GUI.git
+
+cd database_GUI
+
+$ curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+
+$ sudo apt-get install -y nodejs
+
+sudo apt-get install -y build-essential
+
+npm install
+npm install bootstrap --save
+npm install --save reactstrap react react-dom
+npm install react-table
+npm install react-select
+npm install reactstrap
+npm install react-plotly.js plotly.js
+
+pip install -r requirements
+
+```
+
+### Getting started
+
+Launch the MongoDB client
+
+```
+sudo mongodb
+```
+
+
+Create a demonstration database, the create_database.py file shows you how to make a database using them dummy data provided in this repository.
+
+```
+cd  database_creation_tools
+python create_database.py
+
+```
+
+Launch the RESTfull API which allows the GUI to interact with the database.
+
+```
+python rest_api_database_functions.py
+```
+
+Launch the database GUI using npm from the root folder of the repository
+
+```
+cd ..
+npm start
+```
+
+At this stage your web browser should load and you should be able to use and interact with the GUI. If not try navigating to http://localhost:3000/

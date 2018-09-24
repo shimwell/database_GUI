@@ -1,0 +1,6 @@
+pandas
+pymongo
+bson
+xlrd
+flask
+urllib

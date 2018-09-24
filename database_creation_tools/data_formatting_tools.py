@@ -9,7 +9,7 @@ from bson.code import Code
 import xlrd
 
 
-def find_csv_files(data_folders):
+def find_files(data_folders,extension):
     ''' function searches through folders and finds files ending with .txt or .csv
         input: folder(s) to search through
         input type: list of strings
@@ -19,8 +19,8 @@ def find_csv_files(data_folders):
     for folder in data_folders:
         print(folder)
         for file in os.listdir(folder):
-            if file.endswith(".txt"):
-                filename= os.path.join(folder ,file)
+            if file.endswith(extension):
+                filename = os.path.join(folder ,file)
                 list_of_filenames.append(filename)
     return list_of_filenames
 
@@ -92,8 +92,7 @@ def write_json_files(json_objects, filenames):
     list_of_json_objects = []
     for filename, json_object in zip(filenames, json_objects):
         with open(filename, 'w') as outfile:
-            #json.dump(json_object, outfile, indent=4)
-            json.dump(json_object, outfile)
+            json.dump(json_object, outfile,  indent=4)
     return filenames
 
 

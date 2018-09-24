@@ -4,7 +4,7 @@ import React, { Component } from "react";
 //import { render } from "react-dom";
 //import logo from './logo.svg';
 
-import "./App.css";
+//import "./App.css";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -419,7 +419,7 @@ class App extends Component {
         <Container>
           <Row>
             <Col>
-              <h1 className="heading">Materials database</h1>
+              <h1 className="heading">database GUI</h1>
             </Col>
           </Row>
           <Row>
