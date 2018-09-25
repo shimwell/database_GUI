@@ -103,15 +103,22 @@ function AxisDropdowns(props){
 
 function PlotlyGraph(props){
   console.log('props.plotted_data',props.plotted_data)
-  console.log('props.plotted_data.length',props.plotted_data.length)
+  console.log('props.selected',Object.keys(props.selected).length)
+  console.log('props.plotted_data.length',Object.keys(props.plotted_data).length)
+  console.log('props.x_axis_label',props.x_axis_label)
+  console.log('props.y_axis_label',props.y_axis_label)
   const list_of_data_dictionaries=[]
-  if (props.plotted_data === {} || props.x_axis_values_list === "" || props.y_axis_values_list === ""){
-    console.log()
-    list_of_data_dictionaries.push({'x':[],
-                                    'y':[],
-                                    'type': "scatter",
-                                    'mode': "lines+points"
-                                  })
+  if (Object.keys(props.plotted_data).length === 0 ||
+                  Object.keys(props.selected).length == 0 ||
+                  props.x_axis_label === "" ||
+                  props.y_axis_label === ""){
+    console.log('nothing to plot')
+    return <br/>
+    // list_of_data_dictionaries.push({'x':[],
+    //                                 'y':[],
+    //                                 'type': "scatter",
+    //                                 'mode': "lines+points"
+    //                               })
   }else{
      for (var key in props.plotted_data) {
 
@@ -436,7 +443,7 @@ class App extends Component {
             </Col>
             <Col md="7" lg="7">
 
-              <PlotlyGraph plotted_data={this.state.plotted_data} x_axis_label={this.state.x_axis_label} y_axis_label={this.state.y_axis_label} />
+              <PlotlyGraph selected={this.state.selected} plotted_data={this.state.plotted_data} x_axis_label={this.state.x_axis_label} y_axis_label={this.state.y_axis_label} />
             </Col>
           </Row>
 
