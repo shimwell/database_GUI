@@ -357,6 +357,7 @@ class App extends Component {
 
 
   toggleRow(filename) {
+    this.setState({loading:true})
     this.setState({loading_graph:false})
 		const newSelected = Object.assign({}, this.state.selected);
 		newSelected[filename] = !this.state.selected[filename];
@@ -395,6 +396,7 @@ class App extends Component {
           plotted_dataCopy[filename] = data
           this.setState({ plotted_data: plotted_dataCopy });
           this.setState({loading_graph:false})
+          this.setState({loading:false})
           console.log("state =", this.state);
         })
         .catch(err => {
@@ -404,7 +406,7 @@ class App extends Component {
 
     }else{
       delete plotted_dataCopy[filename];
-
+      this.setState({loading:false})
       // const allFalse = Object.keys(select_dic).every(function(k){ return select_dic[k] === false });
       //
       // if (allFalse === true){
