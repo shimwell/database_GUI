@@ -225,6 +225,8 @@ class App extends Component {
       loading:false,
       selected: {},
       loading_graph:false,
+      requires_axis_selection:true,
+      requires_checkbox_selection:true,
 
 
     };
@@ -322,13 +324,9 @@ class App extends Component {
 
 
 
-  ReturnColumns(){
-    var check_box_class
-    if (Object.keys(this.state.selected).length ===0){
-      check_box_class =  "checkbox_highlighted"
-    }else{
-      check_box_class = "checkbox"
-    }
+  ReturnColumns(check_box_class){
+
+
 
     const columns = [
       {
@@ -363,12 +361,29 @@ class App extends Component {
 		const newSelected = Object.assign({}, this.state.selected);
 		newSelected[filename] = !this.state.selected[filename];
 		console.log('check box clicked',filename, 'state=',newSelected[filename])
-		this.setState({
-			selected: newSelected,
-		});
+		this.setState({selected: newSelected,});
+
+    const select_dic= this.state.selected
+    console.log('values')
+    console.log(Object.values(select_dic))
+    // console.log(Object.values(select_dic).every(true))
+
+
+
+    // Object.keys(select_dic).forEach(function(key) {
+    //     console.log('key ',key, select_dic[key]);
+    //     if (select_dic[key] ===true){
+    //       this.setState({requires_axis_selection: false,});
+    //       break
+    //     }
+    //
+    // });
+
+
 
     let plotted_dataCopy = JSON.parse(JSON.stringify(this.state.plotted_data));
     if (newSelected[filename]===true){
+      // this.setState({requires_checkbox_selection: false,});
       console.log(REST_API_EXAMPLE_URL+"/get_matching_entry?query={'filename':"+filename+'}')
       fetch(REST_API_EXAMPLE_URL+"/get_matching_entry?query={'filename':"+filename+'}')
         .then(result => {
@@ -387,17 +402,19 @@ class App extends Component {
         });
 
 
-      // for (var i = 0; i < this.state.query_result.length; i++) {
-      //   console.log(this.state.query_result[i]['filename'],filename)
-      //   if (this.state.query_result[i]['filename'] === filename){
-      //       console.log('found filename in query data')
-      //       plotted_dataCopy[filename] = this.state.query_result[i]
-      //   }
-      // }
     }else{
       delete plotted_dataCopy[filename];
+
+      // const allFalse = Object.keys(select_dic).every(function(k){ return select_dic[k] === false });
+      //
+      // if (allFalse === true){
+      //   this.setState({requires_checkbox_selection: true,});
+      // }else{
+      //   this.setState({requires_checkbox_selection: false,});
+      // }
     }
 
+    // console.log('requires_checkbox_selection',this.state.requires_checkbox_selection)
     console.log('plotted_dataCopy',plotted_dataCopy)
     this.setState({ plotted_data: plotted_dataCopy }, () => {console.log(this.state.plotted_data)})
 
@@ -473,7 +490,20 @@ class App extends Component {
 
     console.log("selected",this.state.selected)
 
-    const columns = this.ReturnColumns()
+    const selected = this.state.selected
+
+    var check_box_class
+    if (Object.keys(selected).length ===0 || Object.keys(selected).every(function(k){ return selected[k] === false })){
+      check_box_class =  "checkbox_highlighted"
+    }else{
+      check_box_class = "checkbox"
+    }
+    console.log('check_box_class',check_box_class)
+    console.log('check_box_class',Object.keys(selected).every(function(k){ return selected[k] === false }))
+    console.log('check_box_class',this.state.selected)
+
+
+    const columns = this.ReturnColumns(check_box_class)
 
 
     var visible_axis_dropdowns
