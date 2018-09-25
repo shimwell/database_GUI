@@ -4,7 +4,7 @@ import React, { Component } from "react";
 //import { render } from "react-dom";
 //import logo from './logo.svg';
 
-//import "./App.css";
+import "./App.css";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -23,8 +23,42 @@ const REST_API_EXAMPLE_URL = `http://127.0.0.1:5000`;
 
 
 
+function QueryResulltsTable(props){
+  if (props.query_Results.length===0){
+    return <br/>
+  }
 
+  const table_key = []
+  for (var j = 0; j < props.query_Results.length; j++) {
+    table_key.push(props.query_Results[j]['_id']['$oid'])
+  }
+  console.log('table_key',table_key)
 
+  return (
+  <ReactTable
+    key = {table_key}
+    data={props.data}
+    columns={props.columns}
+    showPagination={false}
+    defaultPageSize={Math.max(3,props.query_Results.length)}
+    loading={props.loading}
+  />
+  )
+}
+
+function LabelsForAxisDropdowns(props){
+  if (props.visible===false){
+    return <br/>
+  }else{
+    return(
+      <div>
+
+      <div className="filter_labels">Select X axis:</div>
+      <div className="filter_labels">Select Y axis:</div>
+      </div>
+  )
+}
+}
 
 function LabelsForDropdowns(props){
   const filter_data = props.filter_data;
@@ -40,8 +74,7 @@ function LabelsForDropdowns(props){
       }
         <hr/>
       <br />
-      <div className="filter_labels">Select X axis:</div>
-      <div className="filter_labels">Select Y axis:</div>
+
     </div>
   );
 }
@@ -90,16 +123,31 @@ function FilterDropdowns(props){
 }
 
 function AxisDropdowns(props){
+
+  if (props.visible===false){
+    return <br/>
+  }
+  var dropdown_id
+  if (props.axis_selection === "") {
+    dropdown_id = "axis_data_dropdown_highlighted"
+  }else{
+    dropdown_id = "axis_data_dropdown"
+  }
   return (
+              <div id={dropdown_id}>
               <Select
                 options={props.axis_data}
                 //placeholder={props.placeholder}
                 isClearable={false}
                 onChange={props.event_handler}
                 className="axis_data_dropdown"
+                id={dropdown_id}
               />
+              </div >
  )
 }
+
+
 
 function PlotlyGraph(props){
   console.log('props.plotted_data',props.plotted_data)
@@ -272,6 +320,44 @@ class App extends Component {
     });
   }
 
+
+
+  ReturnColumns(){
+    var check_box_class
+    if (Object.keys(this.state.selected).length ===0){
+      check_box_class =  "checkbox_highlighted"
+    }else{
+      check_box_class = "checkbox"
+    }
+
+    const columns = [
+      {
+        id: "checkbox",
+        accessor: "",
+        Cell: ({ original }) => {
+          return (
+            <input
+              type="checkbox"
+              className={check_box_class}
+              checked={this.state.selected[original.filename] === true}
+              onChange={() => this.toggleRow(original.filename)}
+            />
+          );
+        },
+        sortable: false,
+        width: 45
+      },
+    ];
+    this.state.filter_data.map((x, i) => {
+      columns.push({ Header: x["field"][0],
+                     accessor: x["field"][0] });
+    });
+
+    return columns
+
+  }
+
+
   toggleRow(filename) {
     this.setState({loading_graph:false})
 		const newSelected = Object.assign({}, this.state.selected);
@@ -382,43 +468,20 @@ class App extends Component {
 
 
 
-    const data = results_of_db_query;
-    const table_key = []
-    for (var j = 0; j < data.length; j++) {
-      table_key.push(data[j]['_id']['$oid'])
-    }
-    console.log('table_key',table_key)
 
     console.log("this.state.query_result",this.state.query_result)
 
     console.log("selected",this.state.selected)
 
-    const columns = [
-      {
-        id: "checkbox",
-        accessor: "",
-        Cell: ({ original }) => {
-          return (
-            <input
-              type="checkbox"
-              className="checkbox"
-              checked={this.state.selected[original.filename] === true}
-              onChange={() => this.toggleRow(original.filename)}
-            />
-          );
-        },
-        sortable: false,
-        width: 45
-      },
-    ];
+    const columns = this.ReturnColumns()
 
 
-
-      filter_data.map((x, i) => {
-        columns.push({ Header: x["field"][0],
-                       accessor: x["field"][0] });
-      });
-
+    var visible_axis_dropdowns
+    if (Object.keys(this.state.query_result).length===0){
+      visible_axis_dropdowns=false
+    }else{
+      visible_axis_dropdowns=true
+    }
 
 
     return (
@@ -426,19 +489,30 @@ class App extends Component {
         <Container>
           <Row>
             <Col>
-              <h1 className="heading">database GUI</h1>
+              <h1 className="heading">Database GUI</h1>
             </Col>
           </Row>
           <Row>
             <Col md="2" lg="2">
               <LabelsForDropdowns filter_data={filter_data}/>
+              <LabelsForAxisDropdowns visible={visible_axis_dropdowns}/>
             </Col>
             <Col md="3" lg="3">
               <FilterDropdowns filter_data={filter_data} event_handler={this.handle_meta_data_dropdown_change_function}/>
               <hr/>
               <br/>
-              <AxisDropdowns placeholder="Select x axis" axis_data={axis_data} event_handler={this.handle_x_axis_data_dropdown_change_function}/>
-              <AxisDropdowns placeholder="Select y axis" axis_data={axis_data}  event_handler={this.handle_y_axis_data_dropdown_change_function}/>
+
+              <AxisDropdowns placeholder="Select x axis"
+                             axis_data={axis_data}
+                             axis_selection={this.state.x_axis_label}
+                             event_handler={this.handle_x_axis_data_dropdown_change_function}
+                             visible={visible_axis_dropdowns}/>
+
+              <AxisDropdowns placeholder="Select y axis"
+                             axis_data={axis_data}
+                             axis_selection={this.state.y_axis_label}
+                             event_handler={this.handle_y_axis_data_dropdown_change_function}
+                             visible={visible_axis_dropdowns}/>
 
             </Col>
             <Col md="7" lg="7">
@@ -451,14 +525,15 @@ class App extends Component {
             <Col md="12" lg="12">
               <div>
               <br/>
-                <ReactTable
-                  key = {table_key}
-                  data={data}
-                  columns={columns}
-                  showPagination={false}
-                  defaultPageSize={Math.max(3,this.state.query_result.length)}
-                  loading={this.state.loading}
-                />
+
+              <QueryResulltsTable query_Results= {this.state.query_result}
+                                  data={results_of_db_query}
+                                  columns={columns}
+                                  loading={this.state.loading}
+                                  columns={columns}
+                                  />
+
+
               </div>
             </Col>
           </Row>
