@@ -33,18 +33,51 @@ function QueryResulltsTable(props){
     table_key.push(props.query_Results[j]['_id']['$oid'])
   }
   console.log('table_key',table_key)
-
+  console.log('props.data query tabe',props.data)
   return (
   <ReactTable
     key = {table_key}
     data={props.data}
-    columns={props.columns}
+         columns={[{Header:'Query results',columns:props.columns}]}
     showPagination={false}
     defaultPageSize={Math.max(3,props.query_Results.length)}
     loading={props.loading}
   />
   )
 }
+
+function PlottedResulltsTable(props){
+  if (Object.keys(props.query_Results).length ===0){
+    return <br/>
+    console.log('no plotted data so no table')
+  }
+
+  const data = []
+  const table_key = []
+  console.log('props.data plotted table',props.data)
+  Object.keys(props.data).forEach(function(key) {
+      console.log('props.data',key, props.data[key]);
+      data.push(props.data[key])
+      table_key.push(props.data[key]['_id']['$oid'])
+  });
+
+  console.log('props.data data.length', data.length)
+
+  return <ReactTable
+         key = {table_key}
+         data={data}
+         columns={[{Header:'Plotted data',columns:props.columns}]}
+         showPagination={false}
+         defaultPageSize={data.length}
+         loading={props.loading}
+  />
+
+
+
+
+}
+
+
 
 function LabelsForAxisDropdowns(props){
   if (props.visible===false){
@@ -232,6 +265,7 @@ class App extends Component {
     };
 
     this.handle_y_axis_data_dropdown_change_function = this.handle_y_axis_data_dropdown_change_function.bind(this);
+
     this.handle_x_axis_data_dropdown_change_function = this.handle_x_axis_data_dropdown_change_function.bind(this);
 
     this.handle_meta_data_dropdown_change_function = this.handle_meta_data_dropdown_change_function.bind(this);
@@ -562,8 +596,14 @@ class App extends Component {
                                   data={results_of_db_query}
                                   columns={columns}
                                   loading={this.state.loading}
-                                  columns={columns}
                                   />
+
+              <br/>
+              <PlottedResulltsTable query_Results= {this.state.plotted_data}
+                                    data={this.state.plotted_data}
+                                    columns={columns}
+                                    loading={false}
+                                    />
 
 
               </div>
