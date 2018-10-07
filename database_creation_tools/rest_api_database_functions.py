@@ -1,5 +1,5 @@
 from flask import Flask
-from flask import Flask, jsonify, render_template, request, Response
+from flask import Flask, jsonify, render_template, request, Response, send_file
 
 
 import json
@@ -16,6 +16,7 @@ from flask_cors import CORS, cross_origin
 import os
 from data_formatting_tools import *
 from database_tools import *
+from io import BytesIO
 
 
 collection, client, db = connect_to_database()
@@ -74,6 +75,28 @@ def get_entries_in_field(collection, field, query=None):
     else:
       result = collection.distinct(field)
     return result
+
+
+@app.route('/download' ,methods=['GET','POST'])
+@cross_origin()
+def download():
+    ids = request.args.get('ids')
+    ids = ids.strip("'")
+    ids = ids.strip('"')
+    ids = ids.strip("[")
+    ids = ids.strip("]")
+    ids = ids.split(',')
+    list_of_matching_database_entries = []
+    print('ids', ids  )
+    for id in ids:
+        print('id', id)
+        query={'_id':{"$oid":id}}
+        result = collection.find_one(query)
+        results_json = json_util.dumps(result)
+        list_of_matching_database_entries.append(results_json)
+    file_data = str(list_of_matching_database_entries)
+    print('making file')
+    return send_file(BytesIO(file_data), attachment_filename='test.txt', as_attachment=True)
 
 
 @app.route('/find_distinct_entries' ,methods=['GET','POST'])
