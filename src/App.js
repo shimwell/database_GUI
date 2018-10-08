@@ -148,7 +148,9 @@ function AxisDropdowns(props){
 
 function DownloadButton(props){
 
-    props.plotted_data
+    if (Object.keys(props.plotted_data).length == 0){
+      return <br/>
+    }
 
 
     var list_of_ids =[]
@@ -156,7 +158,10 @@ function DownloadButton(props){
         console.log('Key: ',{key}, 'Value: ',props.plotted_data[key]['_id']['$oid']);
         list_of_ids.push(props.plotted_data[key]['_id']['$oid'])
     })
-    const string_of_ids=list_of_ids.join(',')
+    var string_of_ids=list_of_ids.join("','")
+
+    string_of_ids = "'" + string_of_ids + "'"
+
     console.log('string_of_ids',string_of_ids)
 
 
@@ -164,7 +169,7 @@ function DownloadButton(props){
 
              <a href={REST_API_EXAMPLE_URL+"/download?ids="+string_of_ids} download="my_cross_sections.txt"> download</a>
              )
-              
+
 }
 
 function PlotlyGraph(props){
@@ -277,7 +282,7 @@ class App extends Component {
 
 
   // }
-  
+
   handle_meta_data_dropdown_change_function(optionSelected) {
     this.setState({loading:true})
     console.log("new metadata field selected", optionSelected.value);
@@ -586,9 +591,9 @@ class App extends Component {
             </Col>
             <Col md="7" lg="7">
 
-              <PlotlyGraph selected={this.state.selected} 
-                           plotted_data={this.state.plotted_data} 
-                           x_axis_label={this.state.x_axis_label} 
+              <PlotlyGraph selected={this.state.selected}
+                           plotted_data={this.state.plotted_data}
+                           x_axis_label={this.state.x_axis_label}
                            y_axis_label={this.state.y_axis_label} />
 
             <DownloadButton plotted_data={this.state.plotted_data}/>
