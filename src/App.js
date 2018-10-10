@@ -167,7 +167,7 @@ function DownloadButton(props){
 
     return  (
 
-             <a href={REST_API_EXAMPLE_URL+"/download?ids="+string_of_ids} download="my_cross_sections.txt"> download</a>
+             <a href={REST_API_EXAMPLE_URL+"/download_py3?ids="+string_of_ids} download="my_cross_sections.txt"> download</a>
              )
 
 }
