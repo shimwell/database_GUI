@@ -17,7 +17,7 @@ import "react-table/react-table.css";
 //import checkboxHOC from "react-table/lib/hoc/selectTable";
 
 //import {Grid, Row, Col} from 'react-bootstrap';
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row, Col, Button } from "reactstrap";
 
 const REST_API_EXAMPLE_URL = `http://127.0.0.1:5000`;
 
@@ -166,8 +166,9 @@ function DownloadButton(props){
 
 
     return  (
-
-             <a href={REST_API_EXAMPLE_URL+"/download_py3?ids="+string_of_ids} download="my_cross_sections.txt"> download</a>
+            
+             <a href={REST_API_EXAMPLE_URL+"/download_py3?ids="+string_of_ids} download="my_cross_sections.txt"> <Button >Download data</Button></a>
+             
              )
 
 }
@@ -184,7 +185,10 @@ function PlotlyGraph(props){
                   props.x_axis_label === "" ||
                   props.y_axis_label === ""){
     console.log('nothing to plot')
-    return <br/>
+    return (
+      <br/> 
+      )
+
     // list_of_data_dictionaries.push({'x':[],
     //                                 'y':[],
     //                                 'type': "scatter",
@@ -217,7 +221,7 @@ function PlotlyGraph(props){
       yaxis: { title: props.y_axis_label },
       margin: {
         r: 0,
-        t: 0,
+        t: 1,
         pad: 1
       },
       legend:{
