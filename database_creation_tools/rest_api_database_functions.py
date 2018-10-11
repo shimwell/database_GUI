@@ -1,5 +1,5 @@
 from flask import Flask
-from flask import Flask, jsonify, render_template, request, Response
+from flask import Flask, jsonify, render_template, request, Response, send_file
 
 
 import json
@@ -8,6 +8,7 @@ import pandas as pd
 import requests
 import json
 from bson import json_util
+from bson.objectid import ObjectId
 import requests
 import re
 from flask import Flask
@@ -16,7 +17,8 @@ from flask_cors import CORS, cross_origin
 import os
 from data_formatting_tools import *
 from database_tools import *
-
+from io import BytesIO
+from io import StringIO
 
 collection, client, db = connect_to_database()
 
@@ -74,6 +76,60 @@ def get_entries_in_field(collection, field, query=None):
     else:
       result = collection.distinct(field)
     return result
+
+
+@app.route('/download_py2' ,methods=['GET','POST'])
+@cross_origin()
+def download2():
+    ids = request.args.get('ids')
+    ids = ids.strip("'")
+    ids = ids.strip('"')
+    ids = ids.strip("[")
+    ids = ids.strip("]")
+    ids = ids.split(',')
+    list_of_matching_database_entries = []
+    print('ids', ids  )
+    for id in ids:
+        id = id.strip("'")
+        id = id.strip('"')        
+        print('id', id)
+        query={'_id':{"$oid":id}}
+        result = collection.find_one(query)
+        results_json = json_util.dumps(result)
+        list_of_matching_database_entries.append(results_json)
+    file_data = str(list_of_matching_database_entries)
+    print('making file')
+    return send_file(BytesIO(file_data), attachment_filename='test.txt', as_attachment=True)
+
+
+@app.route('/download_py3' ,methods=['GET','POST'])
+@cross_origin()
+def download4():
+    ids = request.args.get('ids')
+    ids = ids.strip("'")
+    ids = ids.strip('"')
+    ids = ids.strip("[")
+    ids = ids.strip("]")
+    ids = ids.split(',')
+    list_of_matching_database_entries = []
+    print('ids', ids  )
+    for id in ids:
+        id = id.strip("'")
+        id = id.strip('"')             
+        print('id', id)
+        query={'_id':ObjectId(id)}
+        result = collection.find_one(query)
+        results_json = json_util.dumps(result)
+        list_of_matching_database_entries.append(results_json)
+
+    file_data = BytesIO()
+    # file_data = StringIO()
+    file_data.write(str(list_of_matching_database_entries).encode('utf-8'))
+    #file_data.write(b'list_of_matching_database_entries')
+    file_data.seek(0)
+    print('making file')
+    return send_file(file_data, attachment_filename='test.txt', as_attachment=True)
+
 
 
 @app.route('/find_distinct_entries' ,methods=['GET','POST'])
@@ -181,7 +237,7 @@ def get_matching_entrys_limited_fields():
             entry=x.split(':')
             fields[entry[0]]=int(entry[1])
     except:
-        fields={}        
+        fields={}
 
 
     print('fields = ',fields)

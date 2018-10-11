@@ -7,7 +7,7 @@ from database_tools import *
 
 collection, client, db = connect_to_database()
 
-query = {'uploader':'shimwell','filename':'granta_upload_files/Small Punch Creep 114.txt'}
+query = {'filename':'a/Small Punch Creep 105.txt'}
 
 myresults=collection.find(query)
 

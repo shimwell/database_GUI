@@ -17,7 +17,7 @@ import "react-table/react-table.css";
 //import checkboxHOC from "react-table/lib/hoc/selectTable";
 
 //import {Grid, Row, Col} from 'react-bootstrap';
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row, Col, Button } from "reactstrap";
 
 const REST_API_EXAMPLE_URL = `http://127.0.0.1:5000`;
 
@@ -166,8 +166,7 @@ function AxisDropdowns(props){
   }else{
     dropdown_id = "axis_data_dropdown"
   }
-  return (
-              <div id={dropdown_id}>
+  return (    <div id={dropdown_id}>
               <Select
                 options={props.axis_data}
                 //placeholder={props.placeholder}
@@ -180,7 +179,32 @@ function AxisDropdowns(props){
  )
 }
 
+function DownloadButton(props){
 
+    if (Object.keys(props.plotted_data).length == 0){
+      return <br/>
+    }
+
+
+    var list_of_ids =[]
+    Object.keys(props.plotted_data).map(function(key) {
+        console.log('Key: ',{key}, 'Value: ',props.plotted_data[key]['_id']['$oid']);
+        list_of_ids.push(props.plotted_data[key]['_id']['$oid'])
+    })
+    var string_of_ids=list_of_ids.join("','")
+
+    string_of_ids = "'" + string_of_ids + "'"
+
+    console.log('string_of_ids',string_of_ids)
+
+
+    return  (
+            
+             <a href={REST_API_EXAMPLE_URL+"/download_py3?ids="+string_of_ids} download="my_cross_sections.txt"> <Button >Download data</Button></a>
+             
+             )
+
+}
 
 function PlotlyGraph(props){
   console.log('props.plotted_data',props.plotted_data)
@@ -190,11 +214,14 @@ function PlotlyGraph(props){
   console.log('props.y_axis_label',props.y_axis_label)
   const list_of_data_dictionaries=[]
   if (Object.keys(props.plotted_data).length === 0 ||
-                  Object.keys(props.selected).length == 0 ||
+                  Object.keys(props.selected).length === 0 ||
                   props.x_axis_label === "" ||
                   props.y_axis_label === ""){
     console.log('nothing to plot')
-    return <br/>
+    return (
+      <br/> 
+      )
+
     // list_of_data_dictionaries.push({'x':[],
     //                                 'y':[],
     //                                 'type': "scatter",
@@ -227,7 +254,7 @@ function PlotlyGraph(props){
       yaxis: { title: props.y_axis_label },
       margin: {
         r: 0,
-        t: 0,
+        t: 1,
         pad: 1
       },
       legend:{
@@ -272,10 +299,27 @@ class App extends Component {
 
     this.toggleRow = this.toggleRow.bind(this);
 
+    // this.handle_download_request = this.handle_download_request.bind(this);
 
 
   }
 
+  // handle_download_request(){
+  //   console.log('dowloading')
+
+  //   const plotted_data= this.state.plotted_data
+  //   console.log('values')
+  //   console.log(Object.values(plotted_data))
+  //   // Object.keys((.forEach(function(key) {
+  //   //      console.log('key ',key, this.state.plotted_data[key]);
+  //   // })
+  //   Object.keys(plotted_data).map(function(key) {
+  //       console.log('Key: ',{key}, 'Value: ',plotted_data[key]['_id']['$oid']);
+
+  //   })
+
+
+  // }
 
   handle_meta_data_dropdown_change_function(optionSelected) {
     this.setState({loading:true})
@@ -457,6 +501,8 @@ class App extends Component {
 
 	}
 
+
+
   componentDidMount() {
     fetch(REST_API_EXAMPLE_URL + "/find_meta_data_fields_and_distinct_entries")
       .then(result => {
@@ -583,7 +629,12 @@ class App extends Component {
             </Col>
             <Col md="7" lg="7">
 
-              <PlotlyGraph selected={this.state.selected} plotted_data={this.state.plotted_data} x_axis_label={this.state.x_axis_label} y_axis_label={this.state.y_axis_label} />
+              <PlotlyGraph selected={this.state.selected}
+                           plotted_data={this.state.plotted_data}
+                           x_axis_label={this.state.x_axis_label}
+                           y_axis_label={this.state.y_axis_label} />
+
+            <DownloadButton plotted_data={this.state.plotted_data}/>
             </Col>
           </Row>
 
