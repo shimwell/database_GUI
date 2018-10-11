@@ -205,6 +205,33 @@ function DownloadButton(props){
              )
 
 }
+function AxisScaleRadioButton(props){
+    if (Object.keys(props.plotted_data).length == 0){
+      return <br/>
+    }
+return (
+
+           <label>
+{props.title} 
+           
+             <input
+               type="radio"
+               value={props.label}
+               checked={props.event_handler === props.label}
+               onChange={props.onChange}
+             />
+             {props.label} {'\u00A0'}
+           </label> 
+
+
+
+  )
+
+}
+
+
+
+
 
 function PlotlyGraph(props){
   console.log('props.plotted_data',props.plotted_data)
@@ -212,6 +239,8 @@ function PlotlyGraph(props){
   console.log('props.plotted_data.length',Object.keys(props.plotted_data).length)
   console.log('props.x_axis_label',props.x_axis_label)
   console.log('props.y_axis_label',props.y_axis_label)
+  console.log('props.x_axis_scale',props.x_axis_scale)
+  console.log('props.y_axis_scale',props.y_axis_scale)
   const list_of_data_dictionaries=[]
   if (Object.keys(props.plotted_data).length === 0 ||
                   Object.keys(props.selected).length === 0 ||
@@ -250,8 +279,10 @@ function PlotlyGraph(props){
   <Plot
     data={list_of_data_dictionaries}
     layout={{
-      xaxis: { title: props.x_axis_label },
-      yaxis: { title: props.y_axis_label },
+      xaxis: { title: props.x_axis_label,
+               type:props.x_axis_scale },
+      yaxis: { title: props.y_axis_label,
+               type:props.y_axis_scale },
       margin: {
         r: 0,
         t: 1,
@@ -278,8 +309,8 @@ class App extends Component {
       query: {},
       query_result: [],
       plotted_data: {},
-      x_axis_label: "",
-      y_axis_label: "",
+      x_axis_scale: 'lin',
+      y_axis_scale: 'lin',
       columns: [],
       data: [],
       loading:false,
@@ -297,29 +328,29 @@ class App extends Component {
 
     this.handle_meta_data_dropdown_change_function = this.handle_meta_data_dropdown_change_function.bind(this);
 
-    this.toggleRow = this.toggleRow.bind(this);
+    this.handle_xaxis_unit_change = this.handle_xaxis_unit_change.bind(this);
+    this.handle_yaxis_unit_change = this.handle_yaxis_unit_change.bind(this);
 
-    // this.handle_download_request = this.handle_download_request.bind(this);
+    this.toggleRow = this.toggleRow.bind(this);
 
 
   }
 
-  // handle_download_request(){
-  //   console.log('dowloading')
+  handle_xaxis_unit_change(event){
+      console.log('event.target.value',event.target.value)
+      this.setState({
+          x_axis_scale: event.target.value
+      });
+      console.log('x_axis_scale',this.state.x_axis_scale)
+  }
 
-  //   const plotted_data= this.state.plotted_data
-  //   console.log('values')
-  //   console.log(Object.values(plotted_data))
-  //   // Object.keys((.forEach(function(key) {
-  //   //      console.log('key ',key, this.state.plotted_data[key]);
-  //   // })
-  //   Object.keys(plotted_data).map(function(key) {
-  //       console.log('Key: ',{key}, 'Value: ',plotted_data[key]['_id']['$oid']);
-
-  //   })
-
-
-  // }
+  handle_yaxis_unit_change(event){
+      console.log('event.target.value',event.target.value)
+      this.setState({
+          y_axis_scale: event.target.value
+      });
+      console.log('y_axis_scale',this.state.y_axis_scale)
+  }
 
   handle_meta_data_dropdown_change_function(optionSelected) {
     this.setState({loading:true})
@@ -334,7 +365,7 @@ class App extends Component {
       console.log('deleting field from query', optionSelected.value["field"])
     }else{
     queryCopy[optionSelected.value["field"]] = optionSelected.value["value"];
-  }// console.log(queryCopy)
+  }
 
     this.setState({ query: queryCopy }, () => {
       console.log("state =", this.state);
@@ -342,9 +373,7 @@ class App extends Component {
       console.log(REST_API_EXAMPLE_URL + "/get_matching_entrys?query=" + JSON.stringify(this.state.query));
 
       var meta_data_fields_string=''
-      // for (var i = 0; i < this.state.meta_data_fields.length; i++) {
-      //   meta_data_fields_string=meta_data_fields_string+  ',"'+this.state.meta_data_fields[i]+'":1'
-      // }
+
       for (var i = 0; i < this.state.axis_data.length; i++) {
         meta_data_fields_string=meta_data_fields_string+  ',"'+this.state.axis_data[i]['value']+'":0'
       }
@@ -445,20 +474,6 @@ class App extends Component {
     const select_dic= this.state.selected
     console.log('values')
     console.log(Object.values(select_dic))
-    // console.log(Object.values(select_dic).every(true))
-
-
-
-    // Object.keys(select_dic).forEach(function(key) {
-    //     console.log('key ',key, select_dic[key]);
-    //     if (select_dic[key] ===true){
-    //       this.setState({requires_axis_selection: false,});
-    //       break
-    //     }
-    //
-    // });
-
-
 
     let plotted_dataCopy = JSON.parse(JSON.stringify(this.state.plotted_data));
     if (newSelected[filename]===true){
@@ -485,19 +500,11 @@ class App extends Component {
     }else{
       delete plotted_dataCopy[filename];
       this.setState({loading:false})
-      // const allFalse = Object.keys(select_dic).every(function(k){ return select_dic[k] === false });
-      //
-      // if (allFalse === true){
-      //   this.setState({requires_checkbox_selection: true,});
-      // }else{
-      //   this.setState({requires_checkbox_selection: false,});
-      // }
+
     }
 
-    // console.log('requires_checkbox_selection',this.state.requires_checkbox_selection)
     console.log('plotted_dataCopy',plotted_dataCopy)
     this.setState({ plotted_data: plotted_dataCopy }, () => {console.log(this.state.plotted_data)})
-
 
 	}
 
@@ -552,8 +559,6 @@ class App extends Component {
 
   }
 
-
-
   render() {
     console.log("filter data", this.state.filter_data);
     console.log("axis_data", this.state.axis_data);
@@ -561,12 +566,7 @@ class App extends Component {
     const filter_data = this.state.filter_data;
     const axis_data = this.state.axis_data;
 
-
-
     const results_of_db_query = this.state.query_result;
-
-
-
 
     console.log("this.state.query_result",this.state.query_result)
 
@@ -632,9 +632,49 @@ class App extends Component {
               <PlotlyGraph selected={this.state.selected}
                            plotted_data={this.state.plotted_data}
                            x_axis_label={this.state.x_axis_label}
-                           y_axis_label={this.state.y_axis_label} />
+                           y_axis_label={this.state.y_axis_label}
+                           x_axis_scale={this.state.x_axis_scale}
+                           y_axis_scale={this.state.y_axis_scale}
+                            />
 
             <DownloadButton plotted_data={this.state.plotted_data}/>
+            <br/>
+            <br/>
+            
+            <AxisScaleRadioButton plotted_data={this.state.plotted_data}
+                                  event_handler={this.state.x_axis_scale}
+                                  onChange={this.handle_xaxis_unit_change}
+                                  label={'log'}
+                                  title = 'X axis scale '
+            />
+            <AxisScaleRadioButton plotted_data={this.state.plotted_data}
+                                  event_handler={this.state.x_axis_scale}
+                                  onChange={this.handle_xaxis_unit_change}
+                                  label={'lin'}
+                                  title = ''
+            />
+
+
+                    
+            <br/>
+            
+            <AxisScaleRadioButton plotted_data={this.state.plotted_data}
+                                  event_handler={this.state.y_axis_scale}
+                                  onChange={this.handle_yaxis_unit_change}
+                                  label={'log'}
+                                  title = 'Y axis scale ' 
+            />
+            <AxisScaleRadioButton plotted_data={this.state.plotted_data}
+                                  event_handler={this.state.y_axis_scale}
+                                  onChange={this.handle_yaxis_unit_change}
+                                  label={'lin'}
+                                  title = ''
+            />            
+
+
+
+
+
             </Col>
           </Row>
 
