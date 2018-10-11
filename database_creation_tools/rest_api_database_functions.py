@@ -128,7 +128,7 @@ def download4():
     #file_data.write(b'list_of_matching_database_entries')
     file_data.seek(0)
     print('making file')
-    return send_file(file_data, attachment_filename='test.txt', as_attachment=True)
+    return send_file(file_data, attachment_filename='my_data.txt', as_attachment=True)
 
 
 
