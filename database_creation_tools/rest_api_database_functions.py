@@ -19,7 +19,7 @@ from data_formatting_tools import *
 from database_tools import *
 from io import BytesIO
 from io import StringIO
-
+import ast
 
 collection, client, db = connect_to_database()
 
@@ -36,11 +36,6 @@ axis_option_fields = find_all_fields_of_a_particular_types_in_database(collectio
 print('axis_option_fields',axis_option_fields)
 
 
-
-myresults=collection.find_one({})
-print(myresults.keys())
-print(myresults["_id"])
-  # 
 
 # metadata_values=[]
 metadata_fields_and_their_distinct_values={}
@@ -262,15 +257,8 @@ def get_matching_entrys_limited_fields():
 def get_matching_entry():
     query_string = request.args.get('query')
 
-    print('query_string',query_string)
-    try:
-        query ={}
-        query_string= query_string.replace('"', '').replace("'", '')
-        for x in query_string.strip('{}').split(','):
-            entry=x.split(':')
-            query[entry[0]]=entry[1]
-    except:
-        query={}
+    query = ast.literal_eval(query_string)
+
     print('query = ',query)
     result = collection.find_one(query)
     results_json = json_util.dumps(result)

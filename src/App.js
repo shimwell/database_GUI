@@ -31,6 +31,7 @@ function QueryResulltsTable(props){
   const table_key = []
   for (var j = 0; j < props.query_Results.length; j++) {
     table_key.push(props.query_Results[j]['_id']['$oid'])
+    //table_key.push(props.query_Results[j]['_id'])
   }
   console.log('table_key',table_key)
   console.log('props.data query tabe',props.data)
@@ -58,13 +59,16 @@ function PlottedResulltsTable(props){
   Object.keys(props.data).forEach(function(key) {
       console.log('props.data',key, props.data[key]);
       data.push(props.data[key])
-      console.log("props.data['_id']",props.data['_id'])
+      //console.log("props.data['_id']['$oid']",props.data['_id']['$oid'])
       //if ('$oid' in Object.keys(props.data['_id'])){
           //console.log('Key: ',{key}, 'Value: ',props.plotted_data[key]['_id']['$oid']);
       //    table_key.push(props.data[key]['_id']['$oid'])
       //}else{
           //console.log('Key: ',{key}, 'Value: ',props.plotted_data[key]['_id']);
+
+
           table_key.push(props.data[key]['_id']['$oid'])
+          //table_key.push(props.data[key]['_id'])
       //}      
   });
 
@@ -151,9 +155,9 @@ function FilterDropdowns(props){
       <Select
         key ={i}
         options={meta_data_dropdown_dict}
-        //placeholder={field_values}
+        placeholder='select'
         name={field_values}
-        //isClearable={true}
+        isClearable={true}
         onChange={props.event_handler}
         className="meta_data_dropdown"
       />
@@ -177,7 +181,7 @@ function AxisDropdowns(props){
               <Select
                 options={props.axis_data}
                 //placeholder={props.placeholder}
-                isClearable={false}
+                isClearable={true}
                 onChange={props.event_handler}
                 className="axis_data_dropdown"
                 id={dropdown_id}
@@ -188,7 +192,7 @@ function AxisDropdowns(props){
 
 function DownloadButton(props){
 
-    if (Object.keys(props.plotted_data).length == 0){
+    if (Object.keys(props.plotted_data).length === 0){
       return <br/>
     }
 
@@ -200,7 +204,10 @@ function DownloadButton(props){
         //    list_of_ids.push(props.plotted_data[key]['_id']['$oid'])
         //}else{
         //    console.log('Key: ',{key}, 'Value: ',props.plotted_data[key]['_id']);
+
+
             list_of_ids.push(props.plotted_data[key]['_id']['$oid'])
+            //list_of_ids.push(props.plotted_data[key]['_id'])
         //}
     })
     var string_of_ids=list_of_ids.join("','")
@@ -218,7 +225,7 @@ function DownloadButton(props){
 
 }
 function AxisScaleRadioButton(props){
-    if (Object.keys(props.plotted_data).length == 0){
+    if (Object.keys(props.plotted_data).length === 0){
       return <br/>
     }
 return (
@@ -253,7 +260,7 @@ function PlotlyGraph(props){
   console.log('props.y_axis_label',props.y_axis_label)
   console.log('props.x_axis_scale',props.x_axis_scale)
   console.log('props.y_axis_scale',props.y_axis_scale)
-  const list_of_data_dictionaries=[]
+  var list_of_data_dictionaries=[]
   if (Object.keys(props.plotted_data).length === 0 ||
                   Object.keys(props.selected).length === 0 ||
                   props.x_axis_label === "" ||
@@ -269,20 +276,21 @@ function PlotlyGraph(props){
     //                                 'mode': "lines+points"
     //                               })
   }else{
+     console.log('plotted_data',props.plotted_data)
      for (var key in props.plotted_data) {
 
      //for (var i = 0; i < props.plotted_data.length; i++) {
-       // console.log('i=',i)
+       console.log('key',props.plotted_data[key]['filename'])
        //
        // console.log( 'key x=',props.x_axis_label)
        // console.log( 'key y=',props.y_axis_label)
        //
        // console.log( 'y=',props.plotted_data)
        list_of_data_dictionaries.push({'x': props.plotted_data[key][props.x_axis_label],
-                                      'y': props.plotted_data[key][props.y_axis_label],
-                                      'type': "scatter",
-                                      'mode': "lines+points",
-                                      'name':props.plotted_data[key]['filename']
+                                       'y': props.plotted_data[key][props.y_axis_label],
+                                       'type': "scatter",
+                                       'mode': "lines+points",
+                                       'name': props.plotted_data[key]['filename']
                                     })
      }
   }
@@ -366,17 +374,21 @@ class App extends Component {
 
   handle_meta_data_dropdown_change_function(optionSelected) {
     this.setState({loading:true})
-    console.log("new metadata field selected", optionSelected.value);
 
-    console.log("new metadata field selected", optionSelected.placeholder);
+    const value = optionSelected === null ? '' : optionSelected.value
+
+    console.log("value", value);
+    //console.log("new metadata field selected", optionSelected.value);
+
+    //console.log("new metadata field selected", optionSelected.placeholder);
     let queryCopy = JSON.parse(JSON.stringify(this.state.query));
     console.log(queryCopy);
 
-    if (optionSelected.value["value"] === ''){
-      delete queryCopy[optionSelected.value["field"]];
-      console.log('deleting field from query', optionSelected.value["field"])
+    if (value["value"] === ''){
+      delete queryCopy[value["field"]];
+      console.log('deleting field from query', value["field"])
     }else{
-    queryCopy[optionSelected.value["field"]] = optionSelected.value["value"];
+      queryCopy[value["field"]] = value["value"];
   }
 
     this.setState({ query: queryCopy }, () => {
@@ -422,7 +434,8 @@ class App extends Component {
   }
 
   handle_x_axis_data_dropdown_change_function(optionSelected) {
-    const value = optionSelected.value;
+
+    const value = optionSelected === null ? '' : optionSelected.value
 
     console.log("new x axis field selected", value);
 
@@ -432,7 +445,8 @@ class App extends Component {
   }
 
   handle_y_axis_data_dropdown_change_function(optionSelected) {
-    const value = optionSelected.value;
+
+    const value = optionSelected === null ? '' : optionSelected.value
 
     console.log("new y axis field selected", value);
 
@@ -490,8 +504,8 @@ class App extends Component {
     let plotted_dataCopy = JSON.parse(JSON.stringify(this.state.plotted_data));
     if (newSelected[filename]===true){
       // this.setState({requires_checkbox_selection: false,});
-      console.log(REST_API_EXAMPLE_URL+"/get_matching_entry?query={'filename':"+filename+'}')
-      fetch(REST_API_EXAMPLE_URL+"/get_matching_entry?query={'filename':"+filename+'}')
+      console.log(REST_API_EXAMPLE_URL+"/get_matching_entry?query={'filename':'"+filename+"'}")
+      fetch(REST_API_EXAMPLE_URL+"/get_matching_entry?query={'filename':'"+filename+"'}")
         .then(result => {
           if (result.ok) {
             return result.json();
@@ -505,7 +519,7 @@ class App extends Component {
           console.log("state =", this.state);
         })
         .catch(err => {
-          console.log("Cannot connect to server "+REST_API_EXAMPLE_URL+"/get_matching_entry?query={'filename':"+filename+'}');
+          console.log("Cannot connect to server "+REST_API_EXAMPLE_URL+"/get_matching_entry?query={'filename':'"+filename+"'}");
         });
 
 
@@ -705,7 +719,7 @@ class App extends Component {
               <PlottedResulltsTable query_Results= {this.state.plotted_data}
                                     data={this.state.plotted_data}
                                     columns={columns}
-                                    loading={false}
+                                    loading={this.state.loading}
                                     />
 
 

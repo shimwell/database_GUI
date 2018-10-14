@@ -149,16 +149,19 @@ if __name__ == '__main__':
   collection, client, db = connect_to_database()
 
   query = {'uploader':'shimwell','filename':'granta_upload_files/Small Punch Creep 113.txt'}
+  query = {'Neutron number':'4'}
 
-  myresults=collection.find(query)
+  myresults=collection.find_one(query)
+  print(myresults)
+  for doc in myresults:
+    print(doc)
+  #print('number of results found = ' ,myresults.count())
 
-  print('number of results found = ' ,myresults.count())
+  #print('current uploader ',myresults[0]['uploader']) 
 
-  print('current uploader ',myresults[0]['uploader']) 
+  #new_values = { "$set":{'uploader':'Mark','filename':'granta_upload_files/Small Punch Creep 113.txt'}}
 
-  new_values = { "$set":{'uploader':'Mark','filename':'granta_upload_files/Small Punch Creep 113.txt'}}
-
-  collection.update_one(query, editted_results)
+  #collection.update_one(query, editted_results)
 
 
 
