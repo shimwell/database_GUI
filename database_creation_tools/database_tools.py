@@ -6,6 +6,8 @@ import collections
 import pymongo
 from pymongo import MongoClient
 from bson.code import Code
+from natsort import natsorted
+
 
 def connect_to_database(db_name='materials_database',collection_name='small_punch'):
     ''' Creates a local MongoDB database called material_database and connects to it
@@ -65,7 +67,8 @@ def get_entries_in_field(collection, field, query=None):
         result = collection.distinct(field, query)
     else:
         result = collection.distinct(field)
-    return result
+    #print(result)
+    return natsorted(result)
 
 def get_type_of_entries_in_field(collection, field, query=None):
     field_type = type(collection.find_one({field: {'$exists': True} })[field]).__name__

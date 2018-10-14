@@ -20,6 +20,7 @@ from database_tools import *
 from io import BytesIO
 from io import StringIO
 
+
 collection, client, db = connect_to_database()
 
 all_database_fields = get_database_fields(collection)
@@ -77,12 +78,13 @@ def convert_query_string_to_query_dict(query_string):
     return query
 
 
-def get_entries_in_field(collection, field, query=None):
-    if query != {}:
-      result = collection.distinct(field,query)
-    else:
-      result = collection.distinct(field)
-    return result
+#def get_entries_in_field(collection, field, query=None):
+#    if query != {}:
+#        result = collection.distinct(field,query)
+#    else:
+#        result = collection.distinct(field)
+#    print('result',result)
+#    return natsorted(result)
 
 
 @app.route('/download_py2' ,methods=['GET','POST'])

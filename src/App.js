@@ -58,13 +58,14 @@ function PlottedResulltsTable(props){
   Object.keys(props.data).forEach(function(key) {
       console.log('props.data',key, props.data[key]);
       data.push(props.data[key])
-      if ('$oid' in Object.keys(props.data['_id'])){
+      console.log("props.data['_id']",props.data['_id'])
+      //if ('$oid' in Object.keys(props.data['_id'])){
           //console.log('Key: ',{key}, 'Value: ',props.plotted_data[key]['_id']['$oid']);
-          table_key.push(props.data[key]['_id']['$oid'])
-      }else{
+      //    table_key.push(props.data[key]['_id']['$oid'])
+      //}else{
           //console.log('Key: ',{key}, 'Value: ',props.plotted_data[key]['_id']);
-          table_key.push(props.data[key]['_id'])
-      }      
+          table_key.push(props.data[key]['_id']['$oid'])
+      //}      
   });
 
   console.log('props.data data.length', data.length)
@@ -194,13 +195,13 @@ function DownloadButton(props){
 
     var list_of_ids =[]
     Object.keys(props.plotted_data).map(function(key) {
-        if ('$oid' in Object.keys(props.plotted_data['_id'])){
-            console.log('Key: ',{key}, 'Value: ',props.plotted_data[key]['_id']['$oid']);
+        //if ('$oid' in Object.keys(props.plotted_data['_id'])){
+        //    console.log('Key: ',{key}, 'Value: ',props.plotted_data[key]['_id']['$oid']);
+        //    list_of_ids.push(props.plotted_data[key]['_id']['$oid'])
+        //}else{
+        //    console.log('Key: ',{key}, 'Value: ',props.plotted_data[key]['_id']);
             list_of_ids.push(props.plotted_data[key]['_id']['$oid'])
-        }else{
-            console.log('Key: ',{key}, 'Value: ',props.plotted_data[key]['_id']);
-            list_of_ids.push(props.plotted_data[key]['_id'])
-        }
+        //}
     })
     var string_of_ids=list_of_ids.join("','")
 
