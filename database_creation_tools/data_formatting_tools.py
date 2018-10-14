@@ -62,6 +62,11 @@ def apply_abs_operation_to_field(json_objects,field):
         json_object[field]=l = [abs(x) for x in json_object[field]]
     return json_objects
 
+def read_in_json_file(filename):
+    # read in json file
+    with open(filename) as f:
+        data = json.load(f)
+    return data
 
 def read_in_json_files(filenames):
     # read in json files

@@ -26,12 +26,12 @@ def upload_json_objects_to_database(data,collection):
 #     collection, client = connect_to_database()
     if type(data)==list:
         for i, item in enumerate(data):
-          try:
-            print('inserting entry into database ',i)
-            collection.insert_one(item)
-          except:
-            print('inserting entry into database failed',i)
-            print('failing filename is ' ,item['filename'])
+            try:
+                print('inserting entry into database ',i)
+                collection.insert_one(item)
+            except:
+                print('inserting entry into database failed',i)
+                #print('failing filename is ' ,item['filename'])
 
     else:
         collection.insert_one(data)
@@ -49,42 +49,44 @@ def get_database_fields(collection,ignore_fields=[]):
                    function(key, stuff) { return null; }
                    """)
 
-    mr = collection.map_reduce(map =  mapper,
-                         reduce = reducer,
-                         #query = query_fields_and_values,
-                         out = "my_collection" + "_keys")
+    mr = collection.map_reduce(map = mapper,
+                               reduce = reducer,
+                               #query = query_fields_and_values,
+                               out = "my_collection" + "_keys")
     unique_fields = []
     for doc in mr.find():
-       if doc["_id"] not in ignore_fields:
-           if doc["_id"] != "_id":
-               unique_fields.append(doc["_id"])
+        if doc["_id"] not in ignore_fields:
+            if doc["_id"] != "_id":
+                unique_fields.append(doc["_id"])
     return unique_fields
 
 def get_entries_in_field(collection, field, query=None):
     if query != {}:
-      result = collection.distinct(field,query)
+        result = collection.distinct(field, query)
     else:
-      result = collection.distinct(field)
+        result = collection.distinct(field)
     return result
 
 def get_type_of_entries_in_field(collection, field, query=None):
-    return type(collection.find_one({field:{ '$exists': True }})[field]).__name__
+    field_type = type(collection.find_one({field: {'$exists': True} })[field]).__name__
+    print(field, field_type)
+    return field_type
     #return type(collection.find_one()[field]).__name__
 
 def find_all_fields_types_in_database(collection):
     all_fields = get_database_fields(collection)
     field_and_type = {}
     for field in all_fields:
-      type_of_field_contents = get_type_of_entries_in_field(collection,field)
-      field_and_type[field] = type_of_field_contents
+        type_of_field_contents = get_type_of_entries_in_field(collection,field)
+        field_and_type[field] = type_of_field_contents
     return field_and_type
 
 def find_all_fields_of_a_particular_types_in_database(collection,type_required):
     all_fields = get_database_fields(collection)
     field_of_correct_type = []
     for field in all_fields:
-        type_of_field_contents = get_type_of_entries_in_field(collection,field)
-        if type_of_field_contents ==type_required:
+        type_of_field_contents = get_type_of_entries_in_field(collection, field)
+        if type_of_field_contents == type_required:
             field_of_correct_type.append(field)
     return field_of_correct_type
 
@@ -92,10 +94,10 @@ def find_all_fields_not_of_a_particular_types_in_database(collection,type_not_de
     all_fields = get_database_fields(collection)
     field_of_correct_type = []
     for field in all_fields:
-        type_of_field_contents = get_type_of_entries_in_field(collection,field)
-        if type_of_field_contents !=type_not_desired:
+        type_of_field_contents = get_type_of_entries_in_field(collection, field)
+        if type_of_field_contents != type_not_desired:
             field_of_correct_type.append(field)
-    return field_of_correct_type    
+    return field_of_correct_type
 
 def get_number_of_matching_entrys(collection, query_fields_and_values):
     result = collection.find(query_fields_and_values)
@@ -107,26 +109,26 @@ def get_matching_entrys(collection, query_fields_and_values,limit=10):
 
 def find_metadata_fields_and_their_distinct_values(collection, ignore_fields=[]):
     meta_data_fields = get_database_fields(collection, ignore_fields)
-    metadata_fields_and_their_distinct_values={}
+    metadata_fields_and_their_distinct_values= {}
     for entry in meta_data_fields:
-        values = get_entries_in_field(collection,entry)
+        values = get_entries_in_field(collection, entry)
         # metadata_values.append(values)
-        metadata_fields_and_their_distinct_values[entry]=values
+        metadata_fields_and_their_distinct_values[entry] = values
 
     meta_data_fields_and_distinct_entries = []
     for field in meta_data_fields:
-        meta_data_fields_and_distinct_entries.append({'field':[field],
-                                                      'distinct_values':metadata_fields_and_their_distinct_values[field]})
+        meta_data_fields_and_distinct_entries.append({'field': [field],
+                                                      'distinct_values': metadata_fields_and_their_distinct_values[field]})
     return meta_data_fields_and_distinct_entries
 
 
 def find_metadata_fields_and_their_distinct_values_and_types(collection, ignore_fields=[]):
     meta_data_fields = get_database_fields(collection, ignore_fields)
-    metadata_fields_and_their_distinct_values={}
+    metadata_fields_and_their_distinct_values = {}
     for entry in meta_data_fields:
-        values = get_entries_in_field(collection,entry)
+        values = get_entries_in_field(collection, entry)
         # metadata_values.append(values)
-        metadata_fields_and_their_distinct_values[entry]=values
+        metadata_fields_and_their_distinct_values[entry] = values
 
 
 

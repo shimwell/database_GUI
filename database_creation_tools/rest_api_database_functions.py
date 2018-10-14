@@ -34,6 +34,13 @@ print('meta_data_fields',meta_data_fields)
 axis_option_fields = find_all_fields_of_a_particular_types_in_database(collection,'list')
 print('axis_option_fields',axis_option_fields)
 
+
+
+myresults=collection.find_one({})
+print(myresults.keys())
+print(myresults["_id"])
+  # 
+
 # metadata_values=[]
 metadata_fields_and_their_distinct_values={}
 for entry in meta_data_fields:
