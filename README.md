@@ -43,6 +43,7 @@ npm install react-table
 npm install react-select
 npm install reactstrap
 npm install react-plotly.js plotly.js
+npm install --save rc-slider
 
 pip install -r requirements
 

@@ -20,6 +20,21 @@ import "react-table/react-table.css";
 //import {Grid, Row, Col} from 'react-bootstrap';
 import { Container, Row, Col, Button } from "reactstrap";
 
+import Slider, { Range, createSliderWithTooltip } from 'rc-slider';
+import 'rc-slider/assets/index.css';
+const style = { width: 200, margin: 50 };
+
+
+const marks = {
+ '-3': 'm',
+  0: '',
+  3: 'k',
+  6: 'M',
+  9: 'G',
+};
+
+const SliderWithTooltip = createSliderWithTooltip(Slider);
+
 const REST_API_EXAMPLE_URL = "http://127.0.0.1:5000";
 
 function QueryResulltsTable(props) {
@@ -199,9 +214,17 @@ function DownloadButton(props) {
 }
 
 function AxisScaleRadioButton(props) {
-  if (Object.keys(props.plotted_data).length == 0) {
+
+
+  if (
+    Object.keys(props.plotted_data).length === 0 ||
+    Object.keys(props.selected).length === 0 ||
+    props.x_axis_label === undefined ||
+    props.y_axis_label === undefined
+  ) {
+    console.log("nothing plotted");
     return <br />;
-  }
+}
   return (
     <label>
       {props.title}
@@ -219,28 +242,36 @@ function PlotlyGraph(props) {
   console.log("props.y_axis_label", props.y_axis_label);
   console.log("props.x_axis_scale", props.x_axis_scale);
   console.log("props.y_axis_scale", props.y_axis_scale);
+  console.log("props.x_axis_mutliplier", props.x_axis_mutliplier);
+  console.log("props.y_axis_mutliplier", props.y_axis_mutliplier);
   const list_of_data_dictionaries = [];
   if (
     Object.keys(props.plotted_data).length === 0 ||
     Object.keys(props.selected).length === 0 ||
-    props.x_axis_label === "" ||
-    props.y_axis_label === ""
+    props.x_axis_label === undefined ||
+    props.y_axis_label === undefined
   ) {
     console.log("nothing to plot");
     return <br />;
 
   } else {
+
+    console.log('x_axis_label',props.x_axis_label)
+
     for (var key in props.plotted_data) {
-      //for (var i = 0; i < props.plotted_data.length; i++) {
-      // console.log('i=',i)
-      //
-      // console.log( 'key x=',props.x_axis_label)
-      // console.log( 'key y=',props.y_axis_label)
-      //
-      // console.log( 'y=',props.plotted_data)
+
+        var multiplied_x_axis = props.plotted_data[key][props.x_axis_label].map(function(entry) {
+            return entry*props.x_axis_mutliplier;
+        });
+
+        var multiplied_y_axis = props.plotted_data[key][props.y_axis_label].map(function(entry) {
+            return entry*props.y_axis_mutliplier;
+        });
+
+
       list_of_data_dictionaries.push({
-        x: props.plotted_data[key][props.x_axis_label],
-        y: props.plotted_data[key][props.y_axis_label],
+        x: multiplied_x_axis,
+        y: multiplied_y_axis,
         type: "scatter",
         mode: "lines+points",
         name: props.plotted_data[key]["filename"]
@@ -274,6 +305,12 @@ function PlotlyGraph(props) {
   );
 }
 
+
+function percentFormatter(v) {
+  return `${v}`;
+}
+
+
 class App extends Component {
   html;
   constructor(props) {
@@ -294,7 +331,9 @@ class App extends Component {
       selected: {},
       loading_graph: false,
       requires_axis_selection: true,
-      requires_checkbox_selection: true
+      requires_checkbox_selection: true,
+      x_axis_mutliplier:1, 
+      y_axis_mutliplier:1 
     };
 
     this.handle_y_axis_data_dropdown_change_function = this.handle_y_axis_data_dropdown_change_function.bind(this);
@@ -303,9 +342,13 @@ class App extends Component {
 
     this.handle_meta_data_dropdown_change_function = this.handle_meta_data_dropdown_change_function.bind(this);
 
-    this.handle_xaxis_unit_change = this.handle_xaxis_unit_change.bind(this);
+    this.handle_xaxis_scale_change = this.handle_xaxis_scale_change.bind(this);
 
-    this.handle_yaxis_unit_change = this.handle_yaxis_unit_change.bind(this);
+    this.handle_yaxis_scale_change = this.handle_yaxis_scale_change.bind(this);
+
+    this.handle_xaxis_units_change = this.handle_xaxis_units_change.bind(this);
+
+    this.handle_yaxis_units_change = this.handle_yaxis_units_change.bind(this);    
 
     this.toggleRow = this.toggleRow.bind(this);
 
@@ -331,7 +374,7 @@ class App extends Component {
     }
   }
 
-  handle_xaxis_unit_change(event) {
+  handle_xaxis_scale_change(event) {
     console.log("event.target.value", event.target.value);
     this.setState({
       x_axis_scale: event.target.value
@@ -339,12 +382,28 @@ class App extends Component {
     console.log("x_axis_scale", this.state.x_axis_scale);
   }
 
-  handle_yaxis_unit_change(event) {
+  handle_yaxis_scale_change(event) {
     console.log("event.target.value", event.target.value);
     this.setState({
       y_axis_scale: event.target.value
     });
     console.log("y_axis_scale", this.state.y_axis_scale);
+  }
+
+  handle_xaxis_units_change(value) {
+    console.log("value", value);
+    this.setState({
+      x_axis_mutliplier: value
+    });
+
+  }
+
+  handle_yaxis_units_change(value) {
+    console.log("value", value);
+    this.setState({
+      y_axis_mutliplier: value
+    });
+
   }
 
   handle_meta_data_dropdown_change_function(optionSelected) {
@@ -646,6 +705,8 @@ class App extends Component {
                 y_axis_label={this.state.y_axis_label}
                 x_axis_scale={this.state.x_axis_scale}
                 y_axis_scale={this.state.y_axis_scale}
+                x_axis_mutliplier={this.state.x_axis_mutliplier}
+                y_axis_mutliplier={this.state.y_axis_mutliplier}
               />
 
               {this.make_clear_button()}
@@ -657,16 +718,22 @@ class App extends Component {
               <AxisScaleRadioButton
                 plotted_data={this.state.plotted_data}
                 event_handler={this.state.x_axis_scale}
-                onChange={this.handle_xaxis_unit_change}
+                onChange={this.handle_xaxis_scale_change}
                 label={"log"}
                 title="X axis scale "
+                x_axis_label={this.state.x_axis_label}
+                y_axis_label={this.state.y_axis_label}  
+                selected={this.state.selected}              
               />
               <AxisScaleRadioButton
                 plotted_data={this.state.plotted_data}
                 event_handler={this.state.x_axis_scale}
-                onChange={this.handle_xaxis_unit_change}
+                onChange={this.handle_xaxis_scale_change}
                 label={"lin"}
                 title=""
+                x_axis_label={this.state.x_axis_label}
+                y_axis_label={this.state.y_axis_label} 
+                selected={this.state.selected}               
               />
 
               <br />
@@ -674,17 +741,32 @@ class App extends Component {
               <AxisScaleRadioButton
                 plotted_data={this.state.plotted_data}
                 event_handler={this.state.y_axis_scale}
-                onChange={this.handle_yaxis_unit_change}
+                onChange={this.handle_yaxis_scale_change}
                 label={"log"}
                 title="Y axis scale "
+                x_axis_label={this.state.x_axis_label}
+                y_axis_label={this.state.y_axis_label} 
+                selected={this.state.selected}               
               />
               <AxisScaleRadioButton
                 plotted_data={this.state.plotted_data}
                 event_handler={this.state.y_axis_scale}
-                onChange={this.handle_yaxis_unit_change}
+                onChange={this.handle_yaxis_scale_change}
                 label={"lin"}
                 title=""
+                x_axis_label={this.state.x_axis_label}
+                y_axis_label={this.state.y_axis_label}  
+                selected={this.state.selected}              
               />
+
+              <br/>
+
+      <label>X axis units
+      <SliderWithTooltip dots min={-3} max={9} marks={marks} step={1} tipFormatter={percentFormatter} onChange={this.handle_xaxis_units_change} defaultValue={0} />
+      </label>
+ 
+
+
             </Col>
           </Row>
 
