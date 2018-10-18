@@ -302,7 +302,7 @@ function PlotlyGraph(props) {
     }
   }
 
-  const base_units = 'eV'
+  const base_units = ' unknown units'
   var units = '('+base_units+')'
   if (props.x_axis_mutliplier === -3){
     units = ' (m'+base_units+')'
