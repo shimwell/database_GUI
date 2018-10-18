@@ -22,15 +22,16 @@ import { Container, Row, Col, Button } from "reactstrap";
 
 import Slider, { Range, createSliderWithTooltip } from 'rc-slider';
 import 'rc-slider/assets/index.css';
-const style = { width: 200, margin: 50 };
+const style2 = {"white-space":"nowrap"}
+const style = { width: 200, margin: 20 };
 
 
 const marks = {
- '-3': 'm',
+ '-3': 'micro',
   0: '',
-  3: 'k',
-  6: 'M',
-  9: 'G',
+  3: 'kilo',
+  6: 'Mega',
+  9: 'Giga',
 };
 
 const SliderWithTooltip = createSliderWithTooltip(Slider);
@@ -190,7 +191,7 @@ function AxisDropdowns(props) {
 }
 
 function DownloadButton(props) {
-  if (Object.keys(props.plotted_data).length == 0) {
+  if (Object.keys(props.plotted_data).length === 0) {
     return <br />;
   }
 
@@ -234,6 +235,27 @@ function AxisScaleRadioButton(props) {
   );
 }
 
+function ScaleSlider(props){
+  if (
+    Object.keys(props.plotted_data).length === 0 ||
+    Object.keys(props.selected).length === 0 ||
+    props.x_axis_label === undefined ||
+    props.y_axis_label === undefined
+  ) {
+    console.log("nothing plotted");
+    return <br />;
+}
+    
+    return (
+    <span style={style2}>
+      X axis units <label style={style}>
+    <SliderWithTooltip dots min={-3} max={9} marks={marks} step={1} tipFormatter={percentFormatter} onChange={props.onChange} defaultValue={0} />
+    </label>
+    </span>
+    )
+}
+
+
 function PlotlyGraph(props) {
   console.log("props.plotted_data", props.plotted_data);
   console.log("props.selected", Object.keys(props.selected).length);
@@ -261,11 +283,12 @@ function PlotlyGraph(props) {
     for (var key in props.plotted_data) {
 
         var multiplied_x_axis = props.plotted_data[key][props.x_axis_label].map(function(entry) {
-            return entry*props.x_axis_mutliplier;
+            return entry*Math.pow(10, props.x_axis_mutliplier);
         });
 
         var multiplied_y_axis = props.plotted_data[key][props.y_axis_label].map(function(entry) {
-            return entry*props.y_axis_mutliplier;
+            return entry*Math.pow(10, props.y_axis_mutliplier);
+            
         });
 
 
@@ -367,7 +390,7 @@ class App extends Component {
 
   make_clear_button() {
     console.log("this.state.selected", Object.keys(this.state.selected).length);
-    if (Object.keys(this.state.selected).length == 0 || Object.keys(this.state.plotted_data).length == 0) {
+    if (Object.keys(this.state.selected).length === 0 || Object.keys(this.state.plotted_data).length === 0) {
       return "";
     } else {
       return <Button onClick={this.handle_clearplot_button_press}>Clear selection</Button>;
@@ -749,11 +772,11 @@ class App extends Component {
                 selected={this.state.selected}               
               />
               <AxisScaleRadioButton
-                plotted_data={this.state.plotted_data}
                 event_handler={this.state.y_axis_scale}
                 onChange={this.handle_yaxis_scale_change}
                 label={"lin"}
                 title=""
+                plotted_data={this.state.plotted_data}
                 x_axis_label={this.state.x_axis_label}
                 y_axis_label={this.state.y_axis_label}  
                 selected={this.state.selected}              
@@ -761,10 +784,14 @@ class App extends Component {
 
               <br/>
 
-      <label>X axis units
-      <SliderWithTooltip dots min={-3} max={9} marks={marks} step={1} tipFormatter={percentFormatter} onChange={this.handle_xaxis_units_change} defaultValue={0} />
-      </label>
- 
+              <ScaleSlider 
+                onChange={this.handle_xaxis_units_change}
+                plotted_data={this.state.plotted_data}
+                x_axis_label={this.state.x_axis_label}
+                y_axis_label={this.state.y_axis_label}  
+                selected={this.state.selected}   
+                />
+
 
 
             </Col>
