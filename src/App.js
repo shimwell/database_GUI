@@ -20,7 +20,7 @@ import "react-table/react-table.css";
 //import {Grid, Row, Col} from 'react-bootstrap';
 import { Container, Row, Col, Button } from "reactstrap";
 
-import Slider, { Range, createSliderWithTooltip } from 'rc-slider';
+import Slider, { createSliderWithTooltip } from 'rc-slider';
 import 'rc-slider/assets/index.css';
 const style2 = {"white-space":"nowrap"}
 const style = { width: 200, margin: 20 };
@@ -192,7 +192,7 @@ function AxisDropdowns(props) {
 
 function DownloadButton(props) {
   if (Object.keys(props.plotted_data).length === 0) {
-    return <br />;
+    return (<br />)
   }
 
   var list_of_ids = [];
@@ -211,7 +211,7 @@ function DownloadButton(props) {
       {" "}
       <Button>Download data</Button>
     </a>
-  );
+  )
 }
 
 function AxisScaleRadioButton(props) {
