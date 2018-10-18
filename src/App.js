@@ -245,7 +245,7 @@ function ScaleSlider(props){
     console.log("nothing plotted");
     return <br />;
 }
-    
+
     return (
     <span style={style2}>
       X axis units <label style={style}>
@@ -283,11 +283,11 @@ function PlotlyGraph(props) {
     for (var key in props.plotted_data) {
 
         var multiplied_x_axis = props.plotted_data[key][props.x_axis_label].map(function(entry) {
-            return entry*Math.pow(10, props.x_axis_mutliplier);
+            return entry*Math.pow(10, -1*props.x_axis_mutliplier);
         });
 
         var multiplied_y_axis = props.plotted_data[key][props.y_axis_label].map(function(entry) {
-            return entry*Math.pow(10, props.y_axis_mutliplier);
+            return entry*Math.pow(10, -1*props.y_axis_mutliplier);
             
         });
 
@@ -302,12 +302,41 @@ function PlotlyGraph(props) {
     }
   }
 
+  const base_units = 'eV'
+  var units = '('+base_units+')'
+  if (props.x_axis_mutliplier === -3){
+    units = ' (m'+base_units+')'
+  }
+  if (props.x_axis_mutliplier === -2 || 
+      props.x_axis_mutliplier === -1 || 
+      props.x_axis_mutliplier === 1 ||
+      props.x_axis_mutliplier === 2 ||
+      props.x_axis_mutliplier === 4 ||
+      props.x_axis_mutliplier === 5 ||
+      props.x_axis_mutliplier === 7 ||
+      props.x_axis_mutliplier === 8 
+      ){
+    units = ' (10 <sup>'+props.x_axis_mutliplier+'</sup> '+base_units+')'
+  }  
+  if (props.x_axis_mutliplier === 3){
+    units = ' (k'+base_units+')'
+  }
+  if (props.x_axis_mutliplier === 6){
+    units = ' (M'+base_units+')'
+  }  
+  if (props.x_axis_mutliplier === 9){
+    units = ' (G'+base_units+')'
+  }  
+        
+
+  const x_axis_title = props.x_axis_label + ' ' + units
+
   return (
     <Plot
       data={list_of_data_dictionaries}
       layout={{
         xaxis: {
-          title: props.x_axis_label,
+          title: x_axis_title,
           type: props.x_axis_scale
         },
         yaxis: {
@@ -355,8 +384,8 @@ class App extends Component {
       loading_graph: false,
       requires_axis_selection: true,
       requires_checkbox_selection: true,
-      x_axis_mutliplier:1, 
-      y_axis_mutliplier:1 
+      x_axis_mutliplier:0, 
+      y_axis_mutliplier:0 
     };
 
     this.handle_y_axis_data_dropdown_change_function = this.handle_y_axis_data_dropdown_change_function.bind(this);
