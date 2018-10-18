@@ -7,7 +7,7 @@ import pymongo
 from pymongo import MongoClient
 from bson.code import Code
 from natsort import natsorted
-
+from tqdm import tqdm
 
 def connect_to_database(db_name='materials_database',collection_name='small_punch'):
     ''' Creates a local MongoDB database called material_database and connects to it
@@ -25,15 +25,16 @@ def delete_database(client, db_name='materials_database'):
     print('database deleted')
 
 def upload_json_objects_to_database(data,collection):
+
+
 #     collection, client = connect_to_database()
     if type(data)==list:
-        for i, item in enumerate(data):
+        for item in tqdm(data , total=len(data)):
+
             try:
-                print('inserting entry into database ',i)
                 collection.insert_one(item)
             except:
-                print('inserting entry into database failed',i)
-                #print('failing filename is ' ,item['filename'])
+                print('inserting entry into database failed',item['filename'])
 
     else:
         collection.insert_one(data)

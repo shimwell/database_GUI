@@ -9,6 +9,17 @@ from pymongo import MongoClient
 import xlrd
 
 
+def find_files_recursive(folder,extension,ignore):
+
+    list_of_files=[]
+
+    for root, dirs, files in os.walk(folder):
+        for file in files:
+          if file.endswith(extension) and not file.endswith(ignore):
+              list_of_files.append(os.path.join(root,file))
+                  
+    return list_of_files
+
 def find_files(data_folders,extension):
     ''' function searches through folders and finds files ending with .txt or .csv
         input: folder(s) to search through

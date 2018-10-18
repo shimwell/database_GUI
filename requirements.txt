@@ -4,3 +4,5 @@ bson
 xlrd
 flask
 flask_cors
+tqdm
+natsort
