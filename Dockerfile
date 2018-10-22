@@ -135,6 +135,17 @@ RUN cd database_GUI && npm install react-select
 RUN cd database_GUI && npm install reactstrap
 RUN cd database_GUI && npm install react-plotly.js plotly.js
 RUN cd database_GUI && npm install --save rc-slider
+RUN cd database_GUI && npm install -g serve
 
-COPY static-html-directory /usr/share/nginx/html
+# add some unit tests
+# RUN cd database_GUI && npm run start test  
+
+RUN cd database_GUI && npm run build
+
+# to serve the new site
+# RUN cd database_GUI && serve -s build
+
+RUN cp -r database_GUI/build /usr/share/nginx/html
+
+# COPY static-html-directory /usr/share/nginx/html
 
