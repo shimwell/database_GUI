@@ -36,7 +36,7 @@ const marks = {
 
 const SliderWithTooltip = createSliderWithTooltip(Slider);
 
-const REST_API_EXAMPLE_URL = "http://127.0.0.1:5000";
+const REST_API_EXAMPLE_URL = "http://127.0.0.1:5001";
 
 function QueryResulltsTable(props) {
   if (props.query_Results.length === 0) {
