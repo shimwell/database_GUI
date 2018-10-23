@@ -104,7 +104,6 @@ EXPOSE 80
 
 STOPSIGNAL SIGTERM
 
-# CMD ["nginx", "-g", "daemon off;"]
 
 
 RUN apt-get update
@@ -117,6 +116,7 @@ RUN apt-get install -y python3-pip
 RUN apt-get install -y git
 
 RUN git clone https://github.com/Shimwell/database_GUI.git
+
 
 RUN cd database_GUI && pip3 install -r requirements.txt --user
 
@@ -135,7 +135,7 @@ RUN cd database_GUI && npm install react-select
 RUN cd database_GUI && npm install reactstrap
 RUN cd database_GUI && npm install react-plotly.js plotly.js
 RUN cd database_GUI && npm install --save rc-slider
-RUN cd database_GUI && npm install -g serve
+# RUN cd database_GUI && npm install -g serve
 
 # add some unit tests
 # RUN cd database_GUI && npm run start test  
@@ -145,7 +145,10 @@ RUN cd database_GUI && npm run build
 # to serve the new site
 # RUN cd database_GUI && serve -s build
 
-RUN cp -r database_GUI/build /usr/share/nginx/html
+RUN cp -r database_GUI/build/* /usr/share/nginx/html
 
 # COPY static-html-directory /usr/share/nginx/html
 
+RUN cd database_GUI/database_creation_tools/ && python3 rest_api_database_functions.py &
+
+CMD ["nginx", "-g", "daemon off;"]
