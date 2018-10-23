@@ -112,8 +112,8 @@ RUN apt-get -y upgrade
 
 
 RUN apt-get install -y python3
-RUN apt-get install -y python3-pip
 RUN apt-get install -y git
+RUN apt-get install -y python3-pip
 
 RUN git clone https://github.com/Shimwell/database_GUI.git
 
@@ -149,6 +149,15 @@ RUN cp -r database_GUI/build/* /usr/share/nginx/html
 
 # COPY static-html-directory /usr/share/nginx/html
 
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4
+
+RUN echo "deb http://repo.mongodb.org/apt/debian stretch/mongodb-org/4.0 main" | tee /etc/apt/sources.list.d/mongodb-org-4.0.list
+
+RUN apt-get update
+
+RUN apt-get install -y mongodb-org
+
+RUN mongod &
 RUN cd database_GUI/database_creation_tools/ && python3 rest_api_database_functions.py &
 
-CMD ["nginx", "-g", "daemon off;"]
+# CMD ["nginx", "-g", "daemon off;"]
