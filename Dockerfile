@@ -158,6 +158,11 @@ RUN apt-get update
 RUN apt-get install -y mongodb-org
 
 RUN mongod &
-RUN cd database_GUI/database_creation_tools/ && python3 rest_api_database_functions.py &
+
+RUN cd database_GUI && git pull
+RUN cd database_GUI/database_creation_tools && python3 create_database_nuclear.py
+
+
+RUN cd database_GUI/database_creation_tools && python3 rest_api_database_functions.py &
 
 CMD ["nginx", "-g", "daemon off;"]
