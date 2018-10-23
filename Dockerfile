@@ -112,8 +112,8 @@ RUN apt-get -y upgrade
 
 
 RUN apt-get install -y python3
-RUN apt-get install -y git
 RUN apt-get install -y python3-pip
+RUN apt-get install -y git
 
 RUN git clone https://github.com/Shimwell/database_GUI.git
 
@@ -160,4 +160,4 @@ RUN apt-get install -y mongodb-org
 RUN mongod &
 RUN cd database_GUI/database_creation_tools/ && python3 rest_api_database_functions.py &
 
-# CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]
