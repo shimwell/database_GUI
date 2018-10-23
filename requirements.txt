@@ -1,6 +1,8 @@
+sphinx
 pandas
 pymongo
 bson
 xlrd
 flask
 flask_cors
+requests
