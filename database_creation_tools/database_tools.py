@@ -6,6 +6,7 @@ import collections
 import pymongo
 from pymongo import MongoClient
 from bson.code import Code
+import socket
 
 def connect_to_database(db_name='materials_database',collection_name='small_punch'):
     ''' Creates a local MongoDB database called material_database and connects to it
@@ -16,6 +17,17 @@ def connect_to_database(db_name='materials_database',collection_name='small_punc
     collection = db[collection_name]
     print('connected to database')
     return collection, client, db
+
+def connect_to_docker_database(db_name='materials_database',collection_name='small_punch'):
+    ''' Creates a local MongoDB database called material_database and connects to it
+        defaults are provided for the names
+    '''
+    host = socket.gethostbyname(socket.gethostname())
+    client = MongoClient(host, 27017)
+    db = client[db_name]
+    collection = db[collection_name]
+    print('connected to database')
+    return collection, client, db    
 
 def delete_database(client, db_name='materials_database'):
 #     collection, client = connect_to_database()
