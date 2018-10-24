@@ -147,6 +147,7 @@ print(list_of_csv_filenames)
 
 list_of_json_objects = make_json_objs_from_files(list_of_csv_filenames)
 
+os.system('mongod --bind_ip_all &')
 for i in list_of_json_objects:
     save_list_of_all_files(i,i['filename']+'.json')
     os.system('mongoimport --collection small_punch --db materials_database --file '+i['filename']+'.json')
