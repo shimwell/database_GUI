@@ -150,9 +150,9 @@ list_of_json_objects = make_json_objs_from_files(list_of_csv_filenames)
 print(list_of_json_objects[0])
 
 
-collection, client, db = connect_to_database()
+collection, client, db = connect_to_docker_database()
 
-delete_database(client)
+#delete_database(client)
 
 upload_json_objects_to_database(list_of_json_objects, collection)
 
