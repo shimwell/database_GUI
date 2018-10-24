@@ -19,8 +19,11 @@ def connect_to_database(db_name='materials_database',collection_name='small_punc
 
 def delete_database(client, db_name='materials_database'):
 #     collection, client = connect_to_database()
-    client.drop_database(db_name)
-    print('database deleted')
+    try:
+      client.drop_database(db_name)
+      print('database deleted')
+    except:
+      print('unable to delete database',db_name)
 
 def upload_json_objects_to_database(data,collection):
 #     collection, client = connect_to_database()
