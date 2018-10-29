@@ -54,7 +54,10 @@ for field in meta_data_fields:
 # print('meta_data_fields',metadata_values)
 
 
-app = Flask(__name__)
+template_dir = os.path.abspath('../build')
+static_dir= os.path.abspath("../build/static")
+print('static_dir',static_dir)
+app = Flask(__name__, template_folder=template_dir, static_folder=static_dir )
 
 CORS(app)
 
@@ -266,6 +269,13 @@ def get_matching_entry():
     result = collection.find_one(query)
     results_json = json_util.dumps(result)
     return results_json
+
+
+
+@app.route('/index' ,methods=['GET','POST'])
+@cross_origin()
+def return_index():
+    return render_template('index.html')
 
 
 if __name__ == "__main__":
