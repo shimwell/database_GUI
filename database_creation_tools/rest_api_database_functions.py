@@ -20,7 +20,8 @@ from database_tools import *
 from io import BytesIO
 from io import StringIO
 
-collection, client, db = connect_to_database()
+#collection, client, db = connect_to_database()
+collection, client, db = connect_to_docker_database()
 
 all_database_fields = get_database_fields(collection)
 
@@ -273,6 +274,12 @@ def get_matching_entry():
 
 
 @app.route('/index' ,methods=['GET','POST'])
+@cross_origin()
+def return_index():
+    return render_template('index.html')
+
+
+@app.route('/' ,methods=['GET','POST'])
 @cross_origin()
 def return_index():
     return render_template('index.html')
