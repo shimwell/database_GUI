@@ -20,6 +20,8 @@ from database_tools import *
 from io import BytesIO
 from io import StringIO
 
+os.system('mongod --bind_ip_all &')
+
 #collection, client, db = connect_to_database()
 collection, client, db = connect_to_docker_database()
 
