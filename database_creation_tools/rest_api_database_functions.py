@@ -283,7 +283,7 @@ def return_index():
 
 @app.route('/' ,methods=['GET','POST'])
 @cross_origin()
-def return_index():
+def return_index_alt():
     return render_template('index.html')
 
 
