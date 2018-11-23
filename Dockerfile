@@ -97,12 +97,16 @@ RUN mongod --fork --logpath /var/log/mongodb.log
 
 RUN echo 'go to localhost:8080'
 
-EXPOSE 80
-EXPOSE 5001
-EXPOSE 5000
-
 RUN cd database_GUI/database_creation_tools && git pull
+
+
+#EXPOSE 80
+#EXPOSE 5001
+#EXPOSE 5000
+
+COPY database_creation_tools/rest_api_database_functions.py database_GUI/database_creation_tools/rest_api_database_functions.py
 
 WORKDIR "database_GUI/database_creation_tools"
 
-#ENTRYPOINT ["python3", "rest_api_database_functions.py"]
+#ENTRYPOINT ["python3"]
+#CMD ["rest_api_database_functions.py"]
