@@ -1,0 +1,41 @@
+# Target Z    :  89
+# Target A    : 227
+# Target state:  
+# Projectile  : n
+# Reaction    : (n,g)     
+# Final state :  
+# Quantity    : Cross section
+# Frame       : L
+# MF          :    3
+# MT          :  102
+# X4 ID       : 12275002 
+# X4 code     : 89-AC-227(N,G)89-AC-228,,SIG,,MXW
+# Author      : Kirby                    
+# Year        : 1956
+# Data points :      1
+#    E(MeV)       xs(mb)      dxs(mb)     dE(MeV)      Evaluation  C/E(F)      Chi-2     Delta(mb)     #points
+  2.50000E-08  4.95000E+05  3.50000E+04  0.00000E+00  7.86944E+05   1.590       70.47      2.9194E+05         1
+#
+# Average deviation:                                                1.591       70.47      2.9194E+05
+#
+# Full reference:
+#H.W.Kirby, G.R.Grove, D.L.Timma
+#Jour. Physical Review Vol.102, p.1140, 1956
+#NEUTRON-CAPTURE CROSS SECTION OF AC-227.
+#
+# Quality information:
+#
+# Quality  12275002 : T1
+# Date     12275002 : 05-01-2018
+# Reaction 12275002 : NP:    1 E-range:  2.530E-08-  2.530E-08 MeV 89-AC-227(N,G)89-AC-228,,SIG,,MXW   pdf: y
+# Paper    12275002 : H.W.Kirby+ Jour. Physical Review Vol.102, p.1140, 1956 NEUTRON-CAPTURE CROSS SECTION OF AC-227.
+# Action   12275002 : 
+# Comment  12275002 : Evaluation        N=     1 F=   1.59     chi-2=   70.5     D=  2.919E+05 mb T=  7.869E+05 mb E=  4.950E+05 K1=  1.59     K2=  4.19
+# Comment  12275002 : TALYS             N=     0 F=   0.00     chi-2=   0.00     D=   0.00     mb T=   0.00     mb E=  4.950E+05 K1=  0.00     K2=  0.00
+# Comment  12275002 : cendl3.1          N=     0 F=   0.00     chi-2=   0.00     D=   0.00     mb T=   0.00     mb E=  4.950E+05 K1=  0.00     K2=  0.00
+# Comment  12275002 : eaf.2010          N=     1 F=   1.72     chi-2=   105.     D=  3.578E+05 mb T=  8.528E+05 mb E=  4.950E+05 K1=  1.72     K2=  6.19
+# Comment  12275002 : endfb8.0          N=     1 F=   1.55     chi-2=   61.4     D=  2.742E+05 mb T=  7.692E+05 mb E=  4.950E+05 K1=  1.55     K2=  3.71
+# Comment  12275002 : irdff1.0          N=     0 F=   0.00     chi-2=   0.00     D=   0.00     mb T=   0.00     mb E=  4.950E+05 K1=  0.00     K2=  0.00
+# Comment  12275002 : jeff3.3           N=     1 F=   1.55     chi-2=   61.4     D=  2.742E+05 mb T=  7.692E+05 mb E=  4.950E+05 K1=  1.55     K2=  3.71
+# Comment  12275002 : jendl4.0          N=     1 F=   1.55     chi-2=   61.4     D=  2.742E+05 mb T=  7.692E+05 mb E=  4.950E+05 K1=  1.55     K2=  3.71
+# Comment  12275002 : tendl.2017        N=     1 F=   1.56     chi-2=   63.6     D=  2.792E+05 mb T=  7.742E+05 mb E=  4.950E+05 K1=  1.56     K2=  3.82

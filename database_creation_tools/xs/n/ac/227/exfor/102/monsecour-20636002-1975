@@ -1,0 +1,41 @@
+# Target Z    :  89
+# Target A    : 227
+# Target state:  
+# Projectile  : n
+# Reaction    : (n,g)     
+# Final state :  
+# Quantity    : Cross section
+# Frame       : L
+# MF          :    3
+# MT          :  102
+# X4 ID       : 20636002 
+# X4 code     : 89-AC-227(N,G)89-AC-228,,SIG,,MXW
+# Author      : Monsecour                
+# Year        : 1975
+# Data points :      1
+#    E(MeV)       xs(mb)      dxs(mb)     dE(MeV)      Evaluation  C/E(F)      Chi-2     Delta(mb)     #points
+  2.50000E-08  7.62000E+05  2.90000E+04  0.00000E+00  7.86944E+05   1.033       2.034      2.4944E+04         1
+#
+# Average deviation:                                                1.053       2.034      2.4944E+04
+#
+# Full reference:
+#M.Monsecour, P.De Regge
+#Jour. Journal of Inorganic and Nuclear Chemistry Vol.37, p.1841, 1975
+#-THE THERMAL NEUTRON CAPTURE CROSS SECTION AND RESONANCE INTERGAL OF AC-227.-
+#
+# Quality information:
+#
+# Quality  20636002 : T1
+# Date     20636002 : 05-01-2018
+# Reaction 20636002 : NP:    1 E-range:  2.530E-08-  2.530E-08 MeV 89-AC-227(N,G)89-AC-228,,SIG,,MXW   pdf: y
+# Paper    20636002 : M.Monsecour+ Jour. Journal of Inorganic and Nuclear Chemistry Vol.37, p.1841, 1975 -THE THERMAL NEUTRON CAPTURE CROSS SECTION AND RESONANCE
+# Action   20636002 : 
+# Comment  20636002 : Evaluation        N=     1 F=   1.05     chi-2=   2.03     D=  2.494E+04 mb T=  7.869E+05 mb E=  7.620E+05 K1=  1.05     K2=  1.11
+# Comment  20636002 : TALYS             N=     0 F=   0.00     chi-2=   0.00     D=   0.00     mb T=   0.00     mb E=  7.620E+05 K1=  0.00     K2=  0.00
+# Comment  20636002 : cendl3.1          N=     0 F=   0.00     chi-2=   0.00     D=   0.00     mb T=   0.00     mb E=  7.620E+05 K1=  0.00     K2=  0.00
+# Comment  20636002 : eaf.2010          N=     1 F=   1.12     chi-2=   9.81     D=  9.081E+04 mb T=  8.528E+05 mb E=  7.620E+05 K1=  1.12     K2=  1.26
+# Comment  20636002 : endfb8.0          N=     1 F=   1.01     chi-2=  6.208E-02 D=  7.226E+03 mb T=  7.692E+05 mb E=  7.620E+05 K1=  1.01     K2=  1.01
+# Comment  20636002 : irdff1.0          N=     0 F=   0.00     chi-2=   0.00     D=   0.00     mb T=   0.00     mb E=  7.620E+05 K1=  0.00     K2=  0.00
+# Comment  20636002 : jeff3.3           N=     1 F=   1.01     chi-2=  6.208E-02 D=  7.226E+03 mb T=  7.692E+05 mb E=  7.620E+05 K1=  1.01     K2=  1.01
+# Comment  20636002 : jendl4.0          N=     1 F=   1.01     chi-2=  6.208E-02 D=  7.226E+03 mb T=  7.692E+05 mb E=  7.620E+05 K1=  1.01     K2=  1.01
+# Comment  20636002 : tendl.2017        N=     1 F=   1.02     chi-2=  0.178     D=  1.223E+04 mb T=  7.742E+05 mb E=  7.620E+05 K1=  1.02     K2=  1.02

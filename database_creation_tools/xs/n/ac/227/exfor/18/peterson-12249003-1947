@@ -1,0 +1,41 @@
+# Target Z    :  89
+# Target A    : 227
+# Target state:  
+# Projectile  : n
+# Reaction    : (n,f)     
+# Final state :  
+# Quantity    : Cross section
+# Frame       : L
+# MF          :    3
+# MT          :   18
+# X4 ID       : 12249003 
+# X4 code     : 89-AC-227(N,F),,SIG,,MXW
+# Author      : Peterson                 
+# Year        : 1947
+# Data points :      1
+#    E(MeV)       xs(mb)      dxs(mb)     dE(MeV)      Evaluation  C/E(F)      Chi-2     Delta(mb)     #points
+  2.50000E-08  2.00000E+03  0.00000E+00  0.00000E+00  1.51198E-01  7.5599E-05   79.99       2000.             1
+#
+# Average deviation:                                               1.4846E+04   79.99       2000.    
+#
+# Full reference:
+#S.Peterson, A.Ghiorso
+#Book. Transuranium Elements p.19.4, 1947
+#THERMAL NEUTRON FISSION PROPERTIES OF AC227, TH227, RA223, AND RA228.
+#
+# Quality information:
+#
+# Quality  12249003 : T2
+# Date     12249003 : 05-01-2018
+# Reaction 12249003 : NP:    1 E-range:  2.530E-08-  2.530E-08 MeV 89-AC-227(N,F),,SIG,,MXW            pdf: y
+# Paper    12249003 : S.Peterson+ Book. Transuranium Elements p.19.4, 1947 THERMAL NEUTRON FISSION PROPERTIES OF AC227, TH227, RA223, AND RA228.
+# Action   12249003 : 
+# Comment  12249003 : Evaluation        N=     1 F=  1.485E+04 chi-2=   80.0     D=  2.000E+03 mb T=  0.151     mb E=  2.000E+03 K1= 1.485E+04 K2= 1.000E+35
+# Comment  12249003 : TALYS             N=     0 F=   0.00     chi-2=   0.00     D=   0.00     mb T=   0.00     mb E=  2.000E+03 K1=  0.00     K2=  0.00
+# Comment  12249003 : cendl3.1          N=     0 F=   0.00     chi-2=   0.00     D=   0.00     mb T=   0.00     mb E=  2.000E+03 K1=  0.00     K2=  0.00
+# Comment  12249003 : eaf.2010          N=     1 F=  7.166E+03 chi-2=   0.00     D=  2.000E+03 mb T=  0.279     mb E=  2.000E+03 K1= 7.166E+03 K2= 1.000E+35
+# Comment  12249003 : endfb8.0          N=     1 F=  2.081E+04 chi-2=   100.     D=  2.000E+03 mb T=  9.610E-02 mb E=  2.000E+03 K1= 2.081E+04 K2= 1.000E+35
+# Comment  12249003 : irdff1.0          N=     0 F=   0.00     chi-2=   0.00     D=   0.00     mb T=   0.00     mb E=  2.000E+03 K1=  0.00     K2=  0.00
+# Comment  12249003 : jeff3.3           N=     1 F=  2.081E+04 chi-2=   100.     D=  2.000E+03 mb T=  9.610E-02 mb E=  2.000E+03 K1= 2.081E+04 K2= 1.000E+35
+# Comment  12249003 : jendl4.0          N=     1 F=  2.081E+04 chi-2=   100.     D=  2.000E+03 mb T=  9.610E-02 mb E=  2.000E+03 K1= 2.081E+04 K2= 1.000E+35
+# Comment  12249003 : tendl.2017        N=     1 F=  1.060E+04 chi-2=   100.     D=  2.000E+03 mb T=  0.189     mb E=  2.000E+03 K1= 1.060E+04 K2= 1.000E+35

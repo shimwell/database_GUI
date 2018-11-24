@@ -1,0 +1,41 @@
+# Target Z    :  89
+# Target A    : 227
+# Target state:  
+# Projectile  : n
+# Reaction    : (n,f)     
+# Final state :  
+# Quantity    : Cross section
+# Frame       : L
+# MF          :    3
+# MT          :   18
+# X4 ID       : V10025502
+# X4 code     : 89-AC-227(N,F),,SIG,,,RECOM
+# Author      : Mughabghab               
+# Year        : 2006
+# Data points :      1
+#    E(MeV)       xs(mb)      dxs(mb)     dE(MeV)      Evaluation  C/E(F)      Chi-2     Delta(mb)     #points
+  2.50000E-08  2.90000E-01  0.00000E+00  0.00000E+00  1.51198E-01  0.5214       29.27      0.1388             1
+#
+# Average deviation:                                                2.404       29.27      0.1388    
+#
+# Full reference:
+#S.F.Mughabghab
+#Book. Atlas of Neutron Resonances, S.F.Mughabghab, 2006
+#Atlas of neutron resonances resonance parameters and thermal cross sections Z=1-100
+#
+# Quality information:
+#
+# Quality  V10025502: R2
+# Date     V10025502: 30-06-2014
+# Reaction V10025502: NP:    1 E-range:  2.530E-08-  2.530E-08 MeV 89-AC-227(N,F),,SIG,,,RECOM         pdf: n
+# Paper    V10025502: S.F.Mughabghab Book. Atlas of Neutron Resonances, S.F.Mughabghab, 2006 Atlas of neutron resonances resonance parameters and thermal cross se
+# Action   V10025502: 
+# Comment  V10025502: Evaluation        N=     1 F=   2.40     chi-2=   29.3     D=  0.139     mb T=  0.151     mb E=  0.290     K1=  2.40     K2=  52.8
+# Comment  V10025502: TALYS             N=     0 F=   0.00     chi-2=   0.00     D=   0.00     mb T=   0.00     mb E=  0.290     K1=  0.00     K2=  0.00
+# Comment  V10025502: cendl3.1          N=     0 F=   0.00     chi-2=   0.00     D=   0.00     mb T=   0.00     mb E=  0.290     K1=  0.00     K2=  0.00
+# Comment  V10025502: eaf.2010          N=     1 F=   1.04     chi-2=   0.00     D=  1.090E-02 mb T=  0.279     mb E=  0.290     K1=  1.04     K2=  1.05
+# Comment  V10025502: endfb8.0          N=     1 F=   3.02     chi-2=   44.7     D=  0.194     mb T=  9.610E-02 mb E=  0.290     K1=  3.02     K2=  161.
+# Comment  V10025502: irdff1.0          N=     0 F=   0.00     chi-2=   0.00     D=   0.00     mb T=   0.00     mb E=  0.290     K1=  0.00     K2=  0.00
+# Comment  V10025502: jeff3.3           N=     1 F=   3.02     chi-2=   44.7     D=  0.194     mb T=  9.610E-02 mb E=  0.290     K1=  3.02     K2=  161.
+# Comment  V10025502: jendl4.0          N=     1 F=   3.02     chi-2=   44.7     D=  0.194     mb T=  9.610E-02 mb E=  0.290     K1=  3.02     K2=  161.
+# Comment  V10025502: tendl.2017        N=     1 F=   1.54     chi-2=   12.2     D=  0.101     mb T=  0.189     mb E=  0.290     K1=  1.54     K2=  2.96

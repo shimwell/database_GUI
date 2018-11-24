@@ -1,0 +1,41 @@
+# Target Z    :  89
+# Target A    : 227
+# Target state:  
+# Projectile  : n
+# Reaction    : (n,f)     
+# Final state :  
+# Quantity    : Cross section
+# Frame       : L
+# MF          :    3
+# MT          :   18
+# X4 ID       : 20351007 
+# X4 code     : 89-AC-227(N,F),,SIG,,MXW,DERIV
+# Author      : DelMarmol                
+# Year        : 1973
+# Data points :      1
+#    E(MeV)       xs(mb)      dxs(mb)     dE(MeV)      Evaluation  C/E(F)      Chi-2     Delta(mb)     #points
+  2.50000E-08  3.35000E-01  6.80000E-02  0.00000E+00  1.51198E-01  0.4513       8.468      0.1838             1
+#
+# Average deviation:                                                2.730       8.468      0.1838    
+#
+# Full reference:
+#P.Del Marmol,  F.Hanappe,  M.Monsecour
+#Jour. Journal of Inorganic and Nuclear Chemistry Vol.35, p.4323, 1973
+#-On the thermal neutron fission cross-section of Ac-227 and Th-227.-
+#
+# Quality information:
+#
+# Quality  20351007 : T2
+# Date     20351007 : 05-01-2018
+# Reaction 20351007 : NP:    1 E-range:  2.530E-08-  2.530E-08 MeV 89-AC-227(N,F),,SIG,,MXW,DERIV      pdf: y
+# Paper    20351007 : P.Del Marmol+ Jour. Journal of Inorganic and Nuclear Chemistry Vol.35, p.4323, 1973 -On the thermal neutron fission cross-section of Ac-227
+# Action   20351007 : 
+# Comment  20351007 : Evaluation        N=     1 F=   2.73     chi-2=   8.47     D=  0.184     mb T=  0.151     mb E=  0.335     K1=  2.73     K2=  35.4
+# Comment  20351007 : TALYS             N=     0 F=   0.00     chi-2=   0.00     D=   0.00     mb T=   0.00     mb E=  0.335     K1=  0.00     K2=  0.00
+# Comment  20351007 : cendl3.1          N=     0 F=   0.00     chi-2=   0.00     D=   0.00     mb T=   0.00     mb E=  0.335     K1=  0.00     K2=  0.00
+# Comment  20351007 : eaf.2010          N=     1 F=   1.20     chi-2=  0.676     D=  5.590E-02 mb T=  0.279     mb E=  0.335     K1=  1.20     K2=  1.29
+# Comment  20351007 : endfb8.0          N=     1 F=   3.49     chi-2=   12.3     D=  0.239     mb T=  9.610E-02 mb E=  0.335     K1=  3.49     K2=  94.2
+# Comment  20351007 : irdff1.0          N=     0 F=   0.00     chi-2=   0.00     D=   0.00     mb T=   0.00     mb E=  0.335     K1=  0.00     K2=  0.00
+# Comment  20351007 : jeff3.3           N=     1 F=   3.49     chi-2=   12.3     D=  0.239     mb T=  9.610E-02 mb E=  0.335     K1=  3.49     K2=  94.2
+# Comment  20351007 : jendl4.0          N=     1 F=   3.49     chi-2=   12.3     D=  0.239     mb T=  9.610E-02 mb E=  0.335     K1=  3.49     K2=  94.2
+# Comment  20351007 : tendl.2017        N=     1 F=   1.78     chi-2=   4.64     D=  0.146     mb T=  0.189     mb E=  0.335     K1=  1.78     K2=  3.53

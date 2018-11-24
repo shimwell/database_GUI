@@ -2,7 +2,8 @@
 
 # sudo docker build -t react_niginx_webhost .
 # docker run --name some-nginx -d -p 8080:80 some-content-nginx
-# docker run -p 8080:80 -it react_niginx_webhost
+# docker run -p 5001:5001 react_niginx_webhost
+# docker run -p 5001:5001 -it react_niginx_webhost
 
 # got to http://localhost:8080/
 
@@ -88,25 +89,28 @@ RUN mkdir -p /data/db
 
 #RUN service mongod start
 
-RUN cd database_GUI/database_creation_tools && git pull
+#RUN cd database_GUI/database_creation_tools && git pull
 
-RUN cd database_GUI/database_creation_tools && python3 create_database_nuclear.py
 
 #RUN mongod &  
 RUN mongod --fork --logpath /var/log/mongodb.log
 
 RUN echo 'go to localhost:8080'
 
-RUN cd database_GUI/database_creation_tools && git pull
 
 
 #EXPOSE 80
 #EXPOSE 5001
 #EXPOSE 5000
 
-COPY database_creation_tools/rest_api_database_functions.py database_GUI/database_creation_tools/rest_api_database_functions.py
+RUN echo 'redoing'
+
+COPY . database_GUI/
+
+RUN cd database_GUI/database_creation_tools && python3 create_database_nuclear.py
 
 WORKDIR "database_GUI/database_creation_tools"
 
-#ENTRYPOINT ["python3"]
-#CMD ["rest_api_database_functions.py"]
+
+ENTRYPOINT ["python3"]
+CMD ["rest_api_database_functions.py"]
