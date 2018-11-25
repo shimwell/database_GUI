@@ -1,0 +1,28 @@
+{
+    "Products": "2n+d", 
+    "Nucleon number": "123", 
+    "MT number": "11n", 
+    "Cross section": [
+        0.0, 
+        8.4378e-13, 
+        3.90246e-09, 
+        4.63265e-07, 
+        3.37143e-05, 
+        0.00029478, 
+        0.00279555
+    ], 
+    "Energy": [
+        23.8893, 
+        25.0, 
+        26.0, 
+        27.0, 
+        28.0, 
+        29.0, 
+        30.0
+    ], 
+    "Neutron number": "73", 
+    "filename": "Sn123_n,2n+d_jeff3.3", 
+    "Protons / Element": "50 Sn tin", 
+    "Library": "jeff3.3", 
+    "Incident particle": "n"
+}

@@ -1,0 +1,38 @@
+{
+    "Products": "n+3He", 
+    "Nucleon number": "234", 
+    "MT number": "34", 
+    "Cross section": [
+        0.0, 
+        3.36957e-15, 
+        4.38882e-13, 
+        1.79851e-11, 
+        5.683e-10, 
+        8.23461e-09, 
+        7.83416e-08, 
+        5.84648e-07, 
+        3.29229e-06, 
+        1.61198e-05, 
+        6.6597e-05, 
+        0.00024161
+    ], 
+    "Energy": [
+        12.223, 
+        20.0, 
+        21.0, 
+        22.0, 
+        23.0, 
+        24.0, 
+        25.0, 
+        26.0, 
+        27.0, 
+        28.0, 
+        29.0, 
+        30.0
+    ], 
+    "Neutron number": "145", 
+    "filename": "Ac234_n,n+3He_tendl.2017", 
+    "Protons / Element": "89 Ac actinium", 
+    "Library": "tendl.2017", 
+    "Incident particle": "n"
+}

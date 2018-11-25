@@ -1,0 +1,34 @@
+{
+    "Products": "3n+f", 
+    "Nucleon number": "226", 
+    "MT number": "38", 
+    "Cross section": [
+        0.0, 
+        1.70842e-09, 
+        5.43916e-08, 
+        6.04846e-07, 
+        5.23272e-06, 
+        4.54817e-05, 
+        0.000400981, 
+        0.00284841, 
+        0.0160913, 
+        0.0681399
+    ], 
+    "Energy": [
+        15.5, 
+        16.0, 
+        16.5, 
+        17.0, 
+        17.5, 
+        18.0, 
+        18.5, 
+        19.0, 
+        19.5, 
+        20.0
+    ], 
+    "Neutron number": "137", 
+    "filename": "Ac226_n,3n+f_endfb8.0", 
+    "Protons / Element": "89 Ac actinium", 
+    "Library": "endfb8.0", 
+    "Incident particle": "n"
+}

@@ -1,0 +1,34 @@
+{
+    "Products": "3n+f", 
+    "Nucleon number": "227", 
+    "MT number": "38", 
+    "Cross section": [
+        0.0, 
+        4.19979e-09, 
+        8.60036e-08, 
+        9.38012e-07, 
+        8.5217e-06, 
+        7.51953e-05, 
+        0.000642832, 
+        0.00548649, 
+        0.0444689, 
+        0.238092
+    ], 
+    "Energy": [
+        15.5, 
+        16.0, 
+        16.5, 
+        17.0, 
+        17.5, 
+        18.0, 
+        18.5, 
+        19.0, 
+        19.5, 
+        20.0
+    ], 
+    "Neutron number": "138", 
+    "filename": "Ac227_n,3n+f_jeff3.3", 
+    "Protons / Element": "89 Ac actinium", 
+    "Library": "jeff3.3", 
+    "Incident particle": "n"
+}

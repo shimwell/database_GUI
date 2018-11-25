@@ -1,0 +1,26 @@
+{
+    "Products": "2n+d", 
+    "Nucleon number": "126", 
+    "MT number": "11", 
+    "Cross section": [
+        0.0, 
+        3.36836e-10, 
+        3.02906e-07, 
+        3.5295e-05, 
+        0.000554828, 
+        0.00686537
+    ], 
+    "Energy": [
+        23.9825, 
+        26.0, 
+        27.0, 
+        28.0, 
+        29.0, 
+        30.0
+    ], 
+    "Neutron number": "76", 
+    "filename": "Sn126_n,2n+d_jeff3.3", 
+    "Protons / Element": "50 Sn tin", 
+    "Library": "jeff3.3", 
+    "Incident particle": "n"
+}

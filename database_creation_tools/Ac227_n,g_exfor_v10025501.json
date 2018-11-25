@@ -1,0 +1,25 @@
+{
+    "Nucleon number": "227", 
+    "Cross section": [
+        890000.0
+    ], 
+    "Experiment name": "mughabghab", 
+    "Products": "g", 
+    "MT number": "102", 
+    "Neutron number": "138", 
+    "Experiment year": "2006", 
+    "Protons / Element": "89 Ac actinium", 
+    "Cross section error": [
+        30000.0
+    ], 
+    "Energy error": [
+        0.0
+    ], 
+    "Experiment id": "v10025501", 
+    "Energy": [
+        2.5e-08
+    ], 
+    "Incident particle": "n", 
+    "Library": "exfor", 
+    "filename": "Ac227_n,g_exfor_v10025501"
+}

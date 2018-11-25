@@ -1,0 +1,34 @@
+{
+    "Products": "3n+f", 
+    "Nucleon number": "225", 
+    "MT number": "38", 
+    "Cross section": [
+        0.0, 
+        9.57415e-11, 
+        8.43267e-09, 
+        1.18206e-07, 
+        1.32847e-06, 
+        1.27614e-05, 
+        0.000117263, 
+        0.00103856, 
+        0.00915013, 
+        0.0785156
+    ], 
+    "Energy": [
+        15.5, 
+        16.0, 
+        16.5, 
+        17.0, 
+        17.5, 
+        18.0, 
+        18.5, 
+        19.0, 
+        19.5, 
+        20.0
+    ], 
+    "Neutron number": "136", 
+    "filename": "Ac225_n,3n+f_jendl4.0", 
+    "Protons / Element": "89 Ac actinium", 
+    "Library": "jendl4.0", 
+    "Incident particle": "n"
+}

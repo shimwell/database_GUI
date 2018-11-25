@@ -1,0 +1,24 @@
+{
+    "Products": "4n", 
+    "Nucleon number": "226", 
+    "MT number": "37", 
+    "Cross section": [
+        0.0, 
+        0.0181055, 
+        0.908471, 
+        6.51192, 
+        27.845
+    ], 
+    "Energy": [
+        17.8093, 
+        18.5, 
+        19.0, 
+        19.5, 
+        20.0
+    ], 
+    "Neutron number": "137", 
+    "filename": "Ac226_n,4n_jeff3.3", 
+    "Protons / Element": "89 Ac actinium", 
+    "Library": "jeff3.3", 
+    "Incident particle": "n"
+}

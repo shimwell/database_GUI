@@ -1,0 +1,25 @@
+{
+    "Nucleon number": "227", 
+    "Cross section": [
+        2000.0
+    ], 
+    "Experiment name": "peterson", 
+    "Products": "F", 
+    "MT number": "18", 
+    "Neutron number": "138", 
+    "Experiment year": "1947", 
+    "Protons / Element": "89 Ac actinium", 
+    "Cross section error": [
+        0.0
+    ], 
+    "Energy error": [
+        0.0
+    ], 
+    "Experiment id": "12249003", 
+    "Energy": [
+        2.5e-08
+    ], 
+    "Incident particle": "n", 
+    "Library": "exfor", 
+    "filename": "Ac227_n,F_exfor_12249003"
+}

@@ -1,0 +1,18 @@
+{
+    "Products": "4n", 
+    "Nucleon number": "225", 
+    "MT number": "37", 
+    "Cross section": [
+        0.0, 
+        0.00209376
+    ], 
+    "Energy": [
+        19.2832, 
+        20.0
+    ], 
+    "Neutron number": "136", 
+    "filename": "Ac225_n,4n_jendl4.0", 
+    "Protons / Element": "89 Ac actinium", 
+    "Library": "jendl4.0", 
+    "Incident particle": "n"
+}

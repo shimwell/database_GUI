@@ -1,0 +1,36 @@
+{
+    "Products": "n+d", 
+    "Nucleon number": "117", 
+    "MT number": "32", 
+    "Cross section": [
+        0.0, 
+        2.49278e-13, 
+        7.26442e-10, 
+        1.16127e-07, 
+        4.03395e-06, 
+        5.61705e-05, 
+        0.000432053, 
+        0.00219851, 
+        0.00826706, 
+        0.0245614, 
+        0.0602793
+    ], 
+    "Energy": [
+        14.1198, 
+        15.5, 
+        16.0, 
+        16.5, 
+        17.0, 
+        17.5, 
+        18.0, 
+        18.5, 
+        19.0, 
+        19.5, 
+        20.0
+    ], 
+    "Neutron number": "67", 
+    "filename": "Sn117_n,n+d_jeff3.3", 
+    "Protons / Element": "50 Sn tin", 
+    "Library": "jeff3.3", 
+    "Incident particle": "n"
+}

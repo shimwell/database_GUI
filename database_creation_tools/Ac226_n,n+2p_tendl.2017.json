@@ -1,0 +1,38 @@
+{
+    "Products": "n+2p", 
+    "Nucleon number": "226", 
+    "MT number": "44", 
+    "Cross section": [
+        0.0, 
+        1.85615e-15, 
+        1.05337e-13, 
+        4.16348e-12, 
+        1.10952e-10, 
+        1.89725e-09, 
+        1.96848e-08, 
+        1.12818e-07, 
+        7.94388e-07, 
+        3.93534e-06, 
+        1.81163e-05, 
+        5.9329e-05
+    ], 
+    "Energy": [
+        12.0709, 
+        20.0, 
+        21.0, 
+        22.0, 
+        23.0, 
+        24.0, 
+        25.0, 
+        26.0, 
+        27.0, 
+        28.0, 
+        29.0, 
+        30.0
+    ], 
+    "Neutron number": "137", 
+    "filename": "Ac226_n,n+2p_tendl.2017", 
+    "Protons / Element": "89 Ac actinium", 
+    "Library": "tendl.2017", 
+    "Incident particle": "n"
+}

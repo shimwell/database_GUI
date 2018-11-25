@@ -1,0 +1,36 @@
+{
+    "Products": "2p", 
+    "Nucleon number": "231", 
+    "MT number": "111", 
+    "Cross section": [
+        0.0, 
+        1.88527e-17, 
+        2.64499e-12, 
+        5.28468e-11, 
+        5.73872e-10, 
+        5.54139e-09, 
+        3.74574e-08, 
+        2.07529e-07, 
+        9.41152e-07, 
+        3.65947e-06, 
+        1.1631e-05
+    ], 
+    "Energy": [
+        10.2752, 
+        21.0, 
+        22.0, 
+        23.0, 
+        24.0, 
+        25.0, 
+        26.0, 
+        27.0, 
+        28.0, 
+        29.0, 
+        30.0
+    ], 
+    "Neutron number": "142", 
+    "filename": "Ac231_n,2p_tendl.2017", 
+    "Protons / Element": "89 Ac actinium", 
+    "Library": "tendl.2017", 
+    "Incident particle": "n"
+}

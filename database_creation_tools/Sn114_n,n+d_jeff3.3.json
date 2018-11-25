@@ -1,0 +1,30 @@
+{
+    "Products": "n+d", 
+    "Nucleon number": "114", 
+    "MT number": "32", 
+    "Cross section": [
+        0.0, 
+        8.17555e-16, 
+        2.17635e-11, 
+        1.2158e-08, 
+        9.3999e-07, 
+        2.19888e-05, 
+        0.000237427, 
+        0.00151866
+    ], 
+    "Energy": [
+        15.8396, 
+        17.0, 
+        17.5, 
+        18.0, 
+        18.5, 
+        19.0, 
+        19.5, 
+        20.0
+    ], 
+    "Neutron number": "64", 
+    "filename": "Sn114_n,n+d_jeff3.3", 
+    "Protons / Element": "50 Sn tin", 
+    "Library": "jeff3.3", 
+    "Incident particle": "n"
+}

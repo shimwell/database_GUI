@@ -1,0 +1,32 @@
+{
+    "Products": "3n+a", 
+    "Nucleon number": "121", 
+    "MT number": "25g", 
+    "Cross section": [
+        0.0, 
+        6.482e-17, 
+        2.2035e-14, 
+        2.86298e-10, 
+        2.2842e-08, 
+        1.02013e-06, 
+        1.58735e-05, 
+        0.000208858, 
+        0.00146441
+    ], 
+    "Energy": [
+        19.8448, 
+        23.0, 
+        24.0, 
+        25.0, 
+        26.0, 
+        27.0, 
+        28.0, 
+        29.0, 
+        30.0
+    ], 
+    "Neutron number": "71", 
+    "filename": "Sn121_n,3n+a_jeff3.3", 
+    "Protons / Element": "50 Sn tin", 
+    "Library": "jeff3.3", 
+    "Incident particle": "n"
+}

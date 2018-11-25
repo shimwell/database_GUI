@@ -1,0 +1,25 @@
+{
+    "Nucleon number": "227", 
+    "Cross section": [
+        762000.0
+    ], 
+    "Experiment name": "monsecour", 
+    "Products": "g", 
+    "MT number": "102", 
+    "Neutron number": "138", 
+    "Experiment year": "1975", 
+    "Protons / Element": "89 Ac actinium", 
+    "Cross section error": [
+        29000.0
+    ], 
+    "Energy error": [
+        0.0
+    ], 
+    "Experiment id": "20636002", 
+    "Energy": [
+        2.5e-08
+    ], 
+    "Incident particle": "n", 
+    "Library": "exfor", 
+    "filename": "Ac227_n,g_exfor_20636002"
+}

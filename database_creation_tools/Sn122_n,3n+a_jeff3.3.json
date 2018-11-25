@@ -1,0 +1,30 @@
+{
+    "Products": "3n+a", 
+    "Nucleon number": "122", 
+    "MT number": "25", 
+    "Cross section": [
+        0.0, 
+        4.2745e-14, 
+        2.50028e-11, 
+        2.69961e-09, 
+        1.05599e-07, 
+        2.85708e-06, 
+        4.2851e-05, 
+        0.000396872
+    ], 
+    "Energy": [
+        19.9603, 
+        24.0, 
+        25.0, 
+        26.0, 
+        27.0, 
+        28.0, 
+        29.0, 
+        30.0
+    ], 
+    "Neutron number": "72", 
+    "filename": "Sn122_n,3n+a_jeff3.3", 
+    "Protons / Element": "50 Sn tin", 
+    "Library": "jeff3.3", 
+    "Incident particle": "n"
+}

@@ -1,0 +1,26 @@
+{
+    "Products": "n+3He", 
+    "Nucleon number": "122", 
+    "MT number": "34", 
+    "Cross section": [
+        0.0, 
+        5.51152e-12, 
+        8.70265e-10, 
+        3.8582e-08, 
+        1.17251e-06, 
+        1.54331e-05
+    ], 
+    "Energy": [
+        21.0685, 
+        26.0, 
+        27.0, 
+        28.0, 
+        29.0, 
+        30.0
+    ], 
+    "Neutron number": "72", 
+    "filename": "Sn122_n,n+3He_jeff3.3", 
+    "Protons / Element": "50 Sn tin", 
+    "Library": "jeff3.3", 
+    "Incident particle": "n"
+}

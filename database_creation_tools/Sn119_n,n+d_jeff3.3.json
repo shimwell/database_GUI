@@ -1,0 +1,36 @@
+{
+    "Products": "n+d", 
+    "Nucleon number": "119", 
+    "MT number": "32", 
+    "Cross section": [
+        0.0, 
+        2.31563e-17, 
+        4.18919e-12, 
+        3.32954e-09, 
+        2.93348e-07, 
+        7.49272e-06, 
+        8.80848e-05, 
+        0.000612327, 
+        0.00291976, 
+        0.0104543, 
+        0.0298483
+    ], 
+    "Energy": [
+        14.38, 
+        15.5, 
+        16.0, 
+        16.5, 
+        17.0, 
+        17.5, 
+        18.0, 
+        18.5, 
+        19.0, 
+        19.5, 
+        20.0
+    ], 
+    "Neutron number": "69", 
+    "filename": "Sn119_n,n+d_jeff3.3", 
+    "Protons / Element": "50 Sn tin", 
+    "Library": "jeff3.3", 
+    "Incident particle": "n"
+}

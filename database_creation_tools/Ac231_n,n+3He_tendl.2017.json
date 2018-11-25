@@ -1,0 +1,38 @@
+{
+    "Products": "n+3He", 
+    "Nucleon number": "231", 
+    "MT number": "34", 
+    "Cross section": [
+        0.0, 
+        1.798e-16, 
+        1.28521e-13, 
+        9.68444e-12, 
+        2.82259e-10, 
+        5.15308e-09, 
+        4.70265e-08, 
+        4.37914e-07, 
+        2.39038e-06, 
+        1.31817e-05, 
+        5.46637e-05, 
+        0.000197021
+    ], 
+    "Energy": [
+        12.6074, 
+        20.0, 
+        21.0, 
+        22.0, 
+        23.0, 
+        24.0, 
+        25.0, 
+        26.0, 
+        27.0, 
+        28.0, 
+        29.0, 
+        30.0
+    ], 
+    "Neutron number": "142", 
+    "filename": "Ac231_n,n+3He_tendl.2017", 
+    "Protons / Element": "89 Ac actinium", 
+    "Library": "tendl.2017", 
+    "Incident particle": "n"
+}

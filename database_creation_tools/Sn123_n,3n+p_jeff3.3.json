@@ -1,0 +1,26 @@
+{
+    "Products": "3n+p", 
+    "Nucleon number": "123", 
+    "MT number": "42g", 
+    "Cross section": [
+        0.0, 
+        8.16239e-16, 
+        4.71956e-10, 
+        7.45034e-07, 
+        4.26528e-05, 
+        0.00100603
+    ], 
+    "Energy": [
+        25.7288, 
+        26.0, 
+        27.0, 
+        28.0, 
+        29.0, 
+        30.0
+    ], 
+    "Neutron number": "73", 
+    "filename": "Sn123_n,3n+p_jeff3.3", 
+    "Protons / Element": "50 Sn tin", 
+    "Library": "jeff3.3", 
+    "Incident particle": "n"
+}

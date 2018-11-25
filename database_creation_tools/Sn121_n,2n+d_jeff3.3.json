@@ -1,0 +1,28 @@
+{
+    "Products": "2n+d", 
+    "Nucleon number": "121", 
+    "MT number": "11n", 
+    "Cross section": [
+        0.0, 
+        5.05146e-12, 
+        6.53767e-08, 
+        7.86576e-06, 
+        0.000180813, 
+        0.00345096, 
+        0.0198025
+    ], 
+    "Energy": [
+        23.5713, 
+        25.0, 
+        26.0, 
+        27.0, 
+        28.0, 
+        29.0, 
+        30.0
+    ], 
+    "Neutron number": "71", 
+    "filename": "Sn121_n,2n+d_jeff3.3", 
+    "Protons / Element": "50 Sn tin", 
+    "Library": "jeff3.3", 
+    "Incident particle": "n"
+}

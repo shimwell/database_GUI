@@ -1,0 +1,28 @@
+{
+    "Products": "3n", 
+    "Nucleon number": "116", 
+    "MT number": "17", 
+    "Cross section": [
+        0.0, 
+        0.0157307, 
+        1.69942, 
+        10.0189, 
+        27.3853, 
+        53.1983, 
+        86.7112
+    ], 
+    "Energy": [
+        17.2587, 
+        17.5, 
+        18.0, 
+        18.5, 
+        19.0, 
+        19.5, 
+        20.0
+    ], 
+    "Neutron number": "66", 
+    "filename": "Sn116_n,3n_jeff3.3", 
+    "Protons / Element": "50 Sn tin", 
+    "Library": "jeff3.3", 
+    "Incident particle": "n"
+}

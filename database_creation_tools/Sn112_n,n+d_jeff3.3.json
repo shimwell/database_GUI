@@ -1,0 +1,32 @@
+{
+    "Products": "n+d", 
+    "Nucleon number": "112", 
+    "MT number": "32", 
+    "Cross section": [
+        0.0, 
+        3.23652e-17, 
+        8.43574e-12, 
+        9.63598e-09, 
+        1.03214e-06, 
+        2.76116e-05, 
+        0.000314459, 
+        0.00202643, 
+        0.00879596
+    ], 
+    "Energy": [
+        15.4601, 
+        16.5, 
+        17.0, 
+        17.5, 
+        18.0, 
+        18.5, 
+        19.0, 
+        19.5, 
+        20.0
+    ], 
+    "Neutron number": "62", 
+    "filename": "Sn112_n,n+d_jeff3.3", 
+    "Protons / Element": "50 Sn tin", 
+    "Library": "jeff3.3", 
+    "Incident particle": "n"
+}

@@ -1,25 +1,8 @@
 {
     "Products": "3n+a", 
     "Nucleon number": "214", 
-    "energy": [
-        9.50236, 
-        17.0, 
-        18.0, 
-        19.0, 
-        20.0, 
-        21.0, 
-        22.0, 
-        23.0, 
-        24.0, 
-        25.0, 
-        26.0, 
-        27.0, 
-        28.0, 
-        29.0, 
-        30.0
-    ], 
     "MT number": "25", 
-    "xs": [
+    "Cross section": [
         0.0, 
         1.44561e-14, 
         0.000807058, 
@@ -36,9 +19,26 @@
         55.6417, 
         53.2392
     ], 
+    "Energy": [
+        9.50236, 
+        17.0, 
+        18.0, 
+        19.0, 
+        20.0, 
+        21.0, 
+        22.0, 
+        23.0, 
+        24.0, 
+        25.0, 
+        26.0, 
+        27.0, 
+        28.0, 
+        29.0, 
+        30.0
+    ], 
     "Neutron number": "125", 
     "filename": "Ac214_n,3n+a_tendl.2017", 
-    "Protons / Element": "89acactinium", 
+    "Protons / Element": "89 Ac actinium", 
     "Library": "tendl.2017", 
     "Incident particle": "n"
 }

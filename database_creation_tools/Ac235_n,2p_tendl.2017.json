@@ -1,0 +1,30 @@
+{
+    "Products": "2p", 
+    "Nucleon number": "235", 
+    "MT number": "111", 
+    "Cross section": [
+        0.0, 
+        5.85021e-12, 
+        9.1555e-11, 
+        9.76679e-10, 
+        8.72305e-09, 
+        4.98415e-08, 
+        2.60159e-07, 
+        1.11608e-06
+    ], 
+    "Energy": [
+        12.1494, 
+        24.0, 
+        25.0, 
+        26.0, 
+        27.0, 
+        28.0, 
+        29.0, 
+        30.0
+    ], 
+    "Neutron number": "146", 
+    "filename": "Ac235_n,2p_tendl.2017", 
+    "Protons / Element": "89 Ac actinium", 
+    "Library": "tendl.2017", 
+    "Incident particle": "n"
+}

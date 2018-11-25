@@ -1,0 +1,34 @@
+{
+    "Products": "n+2p", 
+    "Nucleon number": "229", 
+    "MT number": "44", 
+    "Cross section": [
+        0.0, 
+        9.18176e-16, 
+        2.07558e-13, 
+        6.32518e-12, 
+        1.66285e-10, 
+        2.0884e-09, 
+        1.86616e-08, 
+        1.27635e-07, 
+        7.07226e-07, 
+        3.18263e-06
+    ], 
+    "Energy": [
+        13.6302, 
+        22.0, 
+        23.0, 
+        24.0, 
+        25.0, 
+        26.0, 
+        27.0, 
+        28.0, 
+        29.0, 
+        30.0
+    ], 
+    "Neutron number": "140", 
+    "filename": "Ac229_n,n+2p_tendl.2017", 
+    "Protons / Element": "89 Ac actinium", 
+    "Library": "tendl.2017", 
+    "Incident particle": "n"
+}

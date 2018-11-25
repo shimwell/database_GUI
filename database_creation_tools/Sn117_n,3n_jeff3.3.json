@@ -1,0 +1,30 @@
+{
+    "Products": "3n", 
+    "Nucleon number": "117", 
+    "MT number": "17", 
+    "Cross section": [
+        0.0, 
+        0.0846621, 
+        2.54339, 
+        16.8498, 
+        58.1224, 
+        128.074, 
+        217.919, 
+        318.081
+    ], 
+    "Energy": [
+        16.649, 
+        17.0, 
+        17.5, 
+        18.0, 
+        18.5, 
+        19.0, 
+        19.5, 
+        20.0
+    ], 
+    "Neutron number": "67", 
+    "filename": "Sn117_n,3n_jeff3.3", 
+    "Protons / Element": "50 Sn tin", 
+    "Library": "jeff3.3", 
+    "Incident particle": "n"
+}

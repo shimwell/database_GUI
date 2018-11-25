@@ -1,0 +1,38 @@
+{
+    "Products": "p+a", 
+    "Nucleon number": "122", 
+    "MT number": "112m", 
+    "Cross section": [
+        0.0, 
+        0.0, 
+        5.61478e-16, 
+        1.8986e-14, 
+        1.7969e-12, 
+        2.63316e-11, 
+        2.68557e-10, 
+        2.04417e-09, 
+        1.17914e-08, 
+        5.41671e-08, 
+        2.04328e-07, 
+        6.46216e-07
+    ], 
+    "Energy": [
+        12.2585, 
+        20.0, 
+        21.0, 
+        22.0, 
+        23.0, 
+        24.0, 
+        25.0, 
+        26.0, 
+        27.0, 
+        28.0, 
+        29.0, 
+        30.0
+    ], 
+    "Neutron number": "72", 
+    "filename": "Sn122_n,p+a_jeff3.3", 
+    "Protons / Element": "50 Sn tin", 
+    "Library": "jeff3.3", 
+    "Incident particle": "n"
+}

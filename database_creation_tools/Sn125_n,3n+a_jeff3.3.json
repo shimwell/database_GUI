@@ -1,0 +1,28 @@
+{
+    "Products": "3n+a", 
+    "Nucleon number": "125", 
+    "MT number": "25g", 
+    "Cross section": [
+        0.0, 
+        1.0571e-14, 
+        1.5842e-11, 
+        1.69907e-09, 
+        4.81757e-08, 
+        8.9595e-07, 
+        1.15444e-05
+    ], 
+    "Energy": [
+        20.6523, 
+        25.0, 
+        26.0, 
+        27.0, 
+        28.0, 
+        29.0, 
+        30.0
+    ], 
+    "Neutron number": "75", 
+    "filename": "Sn125_n,3n+a_jeff3.3", 
+    "Protons / Element": "50 Sn tin", 
+    "Library": "jeff3.3", 
+    "Incident particle": "n"
+}

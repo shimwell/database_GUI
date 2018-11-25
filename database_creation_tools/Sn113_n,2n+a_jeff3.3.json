@@ -1,0 +1,28 @@
+{
+    "Products": "2n+a", 
+    "Nucleon number": "113", 
+    "MT number": "24", 
+    "Cross section": [
+        0.0, 
+        6.28888e-09, 
+        4.74343e-06, 
+        0.000132319, 
+        0.00300152, 
+        0.0269225, 
+        0.116438
+    ], 
+    "Energy": [
+        14.0, 
+        15.0, 
+        16.0, 
+        17.0, 
+        18.0, 
+        19.0, 
+        20.0
+    ], 
+    "Neutron number": "63", 
+    "filename": "Sn113_n,2n+a_jeff3.3", 
+    "Protons / Element": "50 Sn tin", 
+    "Library": "jeff3.3", 
+    "Incident particle": "n"
+}

@@ -103,7 +103,7 @@ RUN echo 'go to localhost:8080'
 #EXPOSE 5001
 #EXPOSE 5000
 
-RUN echo 'redoing'
+
 
 COPY . database_GUI/
 
@@ -112,5 +112,5 @@ RUN cd database_GUI/database_creation_tools && python3 create_database_nuclear.p
 WORKDIR "database_GUI/database_creation_tools"
 
 
-ENTRYPOINT ["python3"]
-CMD ["rest_api_database_functions.py"]
+#ENTRYPOINT ["python3"]
+#CMD ["rest_api_database_functions.py"]

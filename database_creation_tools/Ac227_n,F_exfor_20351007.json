@@ -1,0 +1,25 @@
+{
+    "Nucleon number": "227", 
+    "Cross section": [
+        0.335
+    ], 
+    "Experiment name": "delmarmol", 
+    "Products": "F", 
+    "MT number": "18", 
+    "Neutron number": "138", 
+    "Experiment year": "1973", 
+    "Protons / Element": "89 Ac actinium", 
+    "Cross section error": [
+        0.068
+    ], 
+    "Energy error": [
+        0.0
+    ], 
+    "Experiment id": "20351007", 
+    "Energy": [
+        2.5e-08
+    ], 
+    "Incident particle": "n", 
+    "Library": "exfor", 
+    "filename": "Ac227_n,F_exfor_20351007"
+}
