@@ -1,14 +1,32 @@
 
+#xhost local:root
 
-# sudo docker build -t react_niginx_webhost .
-# docker run --name some-nginx -d -p 8080:80 some-content-nginx
-# docker run -p 5001:5001 react_niginx_webhost
-# docker run -p 5001:5001 -it react_niginx_webhost
 
 # got to http://localhost:8080/
 
-#FROM ubuntu:18.04
-FROM ubuntu:16.04
+FROM ubuntu:18.04
+
+
+MAINTAINER Jonathan Shimwell
+
+# This docker image contains all the dependencies required to run a database_GUI server such as wwww.cross-section-plotter.com
+
+# build with
+#   sudo docker build -t react_niginx_webhost .
+#   sudo docker build --no-cache -t react_niginx_webhost .
+
+# run with 
+#   docker run --name some-nginx -d -p 8080:80 some-content-nginx
+#   docker run -p 5001:5001 react_niginx_webhost
+#   docker run -p 5001:5001 -it -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY react_niginx_webhost
+
+# if you have no GUI in docker try running this xhost command prior to running the image
+#   xhost local:root
+
+# push to docker store with
+#     docker login
+#     docker push shimwell/database_GUI:latest
+#
 
 RUN apt-get update
 
@@ -65,6 +83,8 @@ RUN apt-get install -y libcurl3
 
 RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
 
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 #RUN apt-get install -y tzdata
 #RUN dpkg-reconfigure -f noninteractive tzdata
 #RUN timedatectl set-timezone Europe/Bratislava
@@ -74,8 +94,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
 RUN apt-get install -y mongodb-org
 
 
-RUN curl -sL https://packagecloud.io/AtomEditor/atom/gpgkey | apt-key add -
-RUN sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
+RUN apt-get install -y software-properties-common
+RUN add-apt-repository -y ppa:webupd8team/atom
+RUN apt update
+RUN apt install -y atom
 
 RUN apt-get update
 RUN apt-get install -y atom
@@ -89,13 +111,11 @@ RUN mkdir -p /data/db
 
 #RUN service mongod start
 
-#RUN cd database_GUI/database_creation_tools && git pull
-
 
 #RUN mongod &  
-RUN mongod --fork --logpath /var/log/mongodb.log
+#RUN mongod --fork --logpath /var/log/mongodb.log
 
-RUN echo 'go to localhost:8080'
+#RUN echo 'go to localhost:8080'
 
 
 
@@ -112,5 +132,5 @@ RUN cd database_GUI/database_creation_tools && python3 create_database_nuclear.p
 WORKDIR "database_GUI/database_creation_tools"
 
 
-#ENTRYPOINT ["python3"]
-#CMD ["rest_api_database_functions.py"]
+ENTRYPOINT ["python3"]
+CMD ["rest_api_database_functions.py"]
