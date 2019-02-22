@@ -180,6 +180,8 @@ for i in list_of_json_objects:
     os.system('mongoimport --collection small_punch --db materials_database --file '+i['filename']+'.json')
 print(list_of_json_objects[0])
 
+os.system(rm *.json)
+
 
 
 #collection, client, db = connect_to_docker_database()
