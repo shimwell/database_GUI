@@ -1,0 +1,14 @@
+
+
+version: '3'
+services:
+  server:
+    build: ./nginx
+    user: "143"
+    ports:
+     - "8080:8080"
+  db:
+    build: ./mongod
+    restart: always
+    ports:
+     - "27017:27017"
