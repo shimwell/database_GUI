@@ -1,0 +1,41 @@
+# Target Z    :  89
+# Target A    : 227
+# Target state:  
+# Projectile  : n
+# Reaction    : (n,g)     
+# Final state :  
+# Quantity    : Cross section
+# Frame       : L
+# MF          :    3
+# MT          :  102
+# X4 ID       : 12254003 
+# X4 code     : 89-AC-227(N,G)89-AC-228,,SIG,,MXW
+# Author      : Cabell                   
+# Year        : 1959
+# Data points :      1
+#    E(MeV)       xs(mb)      dxs(mb)     dE(MeV)      Evaluation  C/E(F)      Chi-2     Delta(mb)     #points
+  2.50000E-08  8.14000E+05  1.30000E+04  0.00000E+00  7.86944E+05  0.9668       10.77      4.2581E+04         1
+#
+# Average deviation:                                                1.055       10.77      4.2581E+04
+#
+# Full reference:
+#M.J.Cabell
+#Jour. Canadian Journal of Chemistry Vol.37, p.1094, 1959
+#THE PURIFICATION, DETERMINATION, AND CAPTURE CROSS SECTION OF ACTINIUM-227.
+#
+# Quality information:
+#
+# Quality  12254003 : R1
+# Date     12254003 : 30-06-2014
+# Reaction 12254003 : NP:    1 E-range:  2.530E-08-  2.530E-08 MeV 89-AC-227(N,G)89-AC-228,,SIG,,MXW   pdf: y
+# Paper    12254003 : M.J.Cabell Jour. Canadian Journal of Chemistry Vol.37, p.1094, 1959 THE PURIFICATION, DETERMINATION, AND CAPTURE CROSS SECTION OF ACTINIUM-2
+# Action   12254003 : 
+# Comment  12254003 : Evaluation        N=     1 F=   1.05     chi-2=   10.8     D=  4.258E+04 mb T=  7.869E+05 mb E=  8.140E+05 K1=  1.05     K2=  1.12
+# Comment  12254003 : TALYS             N=     0 F=   0.00     chi-2=   0.00     D=   0.00     mb T=   0.00     mb E=  8.140E+05 K1=  0.00     K2=  0.00
+# Comment  12254003 : cendl3.1          N=     0 F=   0.00     chi-2=   0.00     D=   0.00     mb T=   0.00     mb E=  8.140E+05 K1=  0.00     K2=  0.00
+# Comment  12254003 : eaf.2010          N=     1 F=   1.05     chi-2=   8.91     D=  3.881E+04 mb T=  8.528E+05 mb E=  8.140E+05 K1=  1.05     K2=  1.10
+# Comment  12254003 : endfb8.0          N=     1 F=   1.06     chi-2=   11.9     D=  4.477E+04 mb T=  7.692E+05 mb E=  8.140E+05 K1=  1.06     K2=  1.13
+# Comment  12254003 : irdff1.0          N=     0 F=   0.00     chi-2=   0.00     D=   0.00     mb T=   0.00     mb E=  8.140E+05 K1=  0.00     K2=  0.00
+# Comment  12254003 : jeff3.3           N=     1 F=   1.06     chi-2=   11.9     D=  4.477E+04 mb T=  7.692E+05 mb E=  8.140E+05 K1=  1.06     K2=  1.13
+# Comment  12254003 : jendl4.0          N=     1 F=   1.06     chi-2=   11.9     D=  4.477E+04 mb T=  7.692E+05 mb E=  8.140E+05 K1=  1.06     K2=  1.13
+# Comment  12254003 : tendl.2017        N=     1 F=   1.05     chi-2=   9.36     D=  3.977E+04 mb T=  7.742E+05 mb E=  8.140E+05 K1=  1.05     K2=  1.11

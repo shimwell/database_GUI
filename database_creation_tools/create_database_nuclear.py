@@ -174,22 +174,23 @@ print(list_of_csv_filenames)
 
 list_of_json_objects = make_json_objs_from_files(list_of_csv_filenames)
 
-os.system('mongod --bind_ip_all &')
-for i in list_of_json_objects:
-    save_list_of_all_files(i,i['filename']+'.json')
-    os.system('mongoimport --collection small_punch --db materials_database --file '+i['filename']+'.json')
-print(list_of_json_objects[0])
-
-os.system(rm *.json)
-
+# os.system('mongod --bind_ip_all &')
+# for i in list_of_json_objects:
+#     save_list_of_all_files(i,i['filename']+'.json')
+#     os.system('mongoimport --collection small_punch --db materials_database --file '+i['filename']+'.json')
+# print(list_of_json_objects[0])
+# os.system('rm *.json')
 
 
-#collection, client, db = connect_to_docker_database()
 
-#delete_database(client)
 
-#upload_json_objects_to_database(list_of_json_objects, collection)
 
-#all_database_fields = get_database_fields(collection)
+collection, client, db = connect_to_docker_database()
 
-#print('all_database_fields',all_database_fields)
+delete_database(client)
+
+upload_json_objects_to_database(list_of_json_objects, collection)
+
+all_database_fields = get_database_fields(collection)
+
+print('all_database_fields',all_database_fields)

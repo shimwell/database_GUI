@@ -96,6 +96,31 @@ RUN mkdir -p /data/db /data/configdb \
 	&& chown -R mongodb:mongodb /data/db /data/configdb
 VOLUME /data/db /data/configdb
 
+# code added to base mongo image for database_GUI
+
+RUN apt-get update
+RUN apt-get -y upgrade
+RUN apt-get install -y python3 
+RUN apt-get install -y python3-pip
+RUN apt-get install -y git
+
+
+# RUN apt-get install -y python3-sphinx
+RUN pip3 install sphinx --user
+RUN pip3 install pandas --user
+RUN pip3 install pymongo --user
+# RUN pip3 install bson --user
+RUN pip3 install xlrd --user
+
+
+COPY ./deployment-mongod/xs xs/
+
+COPY ./deployment-mongod/database_tools.py .
+COPY ./deployment-mongod/create_database_nuclear.py .
+COPY ./deployment-mongod/nuc_data_lib.py .
+COPY ./deployment-mongod/data_formatting_tools.py .
+
+RUN python3 create_database_nuclear.py
 
 COPY ./deployment-mongod/docker-entrypoint.sh /usr/local/bin/
 ENTRYPOINT ["docker-entrypoint.sh"]
