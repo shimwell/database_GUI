@@ -52,9 +52,29 @@ RUN chgrp -R 0 /var/log /var/cache /run/pid /spool/nginx /var/run /run /tmp /etc
     chmod -R 777 ${HOME} /etc/passwd
 
 
+# added for database_GUI
+RUN apt-get install -y curl
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
+
+
+RUN apt-get install -y nodejs
+RUN apt-get install -y build-essential
+RUN cd ${HOME}/src && npm install
+RUN cd ${HOME}/src && npm install bootstrap --save
+RUN cd ${HOME}/src && npm install reactstrap react react-dom --save
+RUN cd ${HOME}/src && npm install react-table
+RUN cd ${HOME}/src && npm install react-select
+RUN cd ${HOME}/src && npm install reactstrap
+RUN cd ${HOME}/src && npm install react-plotly.js plotly.js
+RUN cd ${HOME}/src && npm install rc-slider --save 
+
+RUN cd ${HOME}/src && npm run build
+
+
+
 # enter
 WORKDIR ${HOME}
-ENTRYPOINT ["docker-entrypoint.sh"]
-CMD ["supervisord"]
+# ENTRYPOINT ["docker-entrypoint.sh"]
+# CMD ["supervisord"]
 
 
