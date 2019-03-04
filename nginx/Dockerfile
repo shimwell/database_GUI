@@ -59,16 +59,19 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 
 RUN apt-get install -y nodejs
 RUN apt-get install -y build-essential
-RUN cd ${HOME}/src && npm install
-RUN cd ${HOME}/src && npm install bootstrap --save
-RUN cd ${HOME}/src && npm install reactstrap react react-dom --save
-RUN cd ${HOME}/src && npm install react-table
-RUN cd ${HOME}/src && npm install react-select
-RUN cd ${HOME}/src && npm install reactstrap
-RUN cd ${HOME}/src && npm install react-plotly.js plotly.js
-RUN cd ${HOME}/src && npm install rc-slider --save 
+RUN cd ${HOME} && npm install
+RUN cd ${HOME} && npm install bootstrap --save
+RUN cd ${HOME} && npm install reactstrap react react-dom --save
+RUN cd ${HOME} && npm install react-table
+RUN cd ${HOME} && npm install react-select
+RUN cd ${HOME} && npm install reactstrap
+RUN cd ${HOME} && npm install react-plotly.js plotly.js
+RUN cd ${HOME} && npm install rc-slider --save 
 
-RUN cd ${HOME}/src && npm run build
+# Source code file
+COPY package.json ${HOME}/
+
+RUN cd ${HOME} && npm run build
 
 
 
@@ -76,5 +79,5 @@ RUN cd ${HOME}/src && npm run build
 WORKDIR ${HOME}
 # ENTRYPOINT ["docker-entrypoint.sh"]
 # CMD ["supervisord"]
-
+CMD ["ls"]
 
