@@ -168,7 +168,7 @@ def save_list_of_all_files(list_of_data,filename):
 
 
 
-list_of_csv_filenames = find_files_recursive(folder="xs", extension="", ignore='.json')
+list_of_csv_filenames = find_files_recursive(folder="xs2", extension="", ignore='.json')
 
 print(list_of_csv_filenames)
 

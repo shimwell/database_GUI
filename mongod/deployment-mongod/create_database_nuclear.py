@@ -17,10 +17,8 @@ def make_json_obj_from_nuclear_data_file(root,file):
         data = make_json_obj_from_evaluation_file(root,file)
     return data
 
-
-
 def make_json_obj_from_evaluation_file(root,file):
-    print('getting data from ',root, file)
+    print('getting data from ',os.path.join(root, file))
     chop_up = root.split(os.sep)
     mt_number = file
     library = chop_up[-1]
@@ -149,6 +147,7 @@ def make_json_objs_from_files(list_of_files):
     list_of_data=[]
 
     for dir_and_file in list_of_files:
+        print(dir_and_file)
         root,file =os.path.split(dir_and_file)
         db_entry = make_json_obj_from_nuclear_data_file(root,file)
         if db_entry != None:
@@ -156,34 +155,26 @@ def make_json_objs_from_files(list_of_files):
 
     return list_of_data
 
-def save_list_of_all_files(list_of_data,filename):
-    print('saving data')
-    with open(filename, 'w') as fout:
-        #json.dump(list_of_data, fout, encoding='utf-8', indent = 4) #python 2
-        json.dump(list_of_data, fout, indent = 4)
 
 
-
-
-list_of_csv_filenames = find_files_recursive(folder="xs", extension="", ignore='.json')
-
-print(list_of_csv_filenames)
+list_of_csv_filenames = find_files_recursive(folder="uncompressed_data", extension="", ignore='.xsdir')
 
 list_of_json_objects = make_json_objs_from_files(list_of_csv_filenames)
 
-os.system('mongod --bind_ip_all &')
-for i in list_of_json_objects:
-    save_list_of_all_files(i,i['filename']+'.json')
-    os.system('mongoimport --collection collection_one --db my_database --file '+i['filename']+'.json')
-print(list_of_json_objects[0])
-os.system('rm *.json')
+# save_json_objs_to_files(list_of_json_objects)
 
+# os.system('mongod --bind_ip_all &')
+# for i in list_of_json_objects:
+#     save_json_obj_to_file(i,i['filename']+'.json')
+#     os.system('mongoimport --collection collection_one --db my_database --file '+i['filename']+'.json')
+# print(list_of_json_objects[0])
+# os.system('rm *.json')
 
-collection, client, db = connect_to_docker_database()
+# collection, client, db = connect_to_docker_database()
 # delete_database(client)
 
 # upload_json_objects_to_database(list_of_json_objects, collection)
 
-all_database_fields = get_database_fields(collection)
+# all_database_fields = get_database_fields(collection)
 
-print('all_database_fields',all_database_fields)
+# print('all_database_fields',all_database_fields)

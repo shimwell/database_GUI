@@ -113,15 +113,16 @@ RUN pip3 install pymongo --user
 RUN pip3 install xlrd --user
 
 
-COPY ./deployment-mongod/xs xs/
+COPY ./deployment-mongod/xs2 xs/
 
-COPY ./deployment-mongod/database_tools.py .
 COPY ./deployment-mongod/create_database_nuclear.py .
+COPY ./deployment-mongod/database_tools.py .
 COPY ./deployment-mongod/nuc_data_lib.py .
 COPY ./deployment-mongod/data_formatting_tools.py .
 
 RUN python3 create_database_nuclear.py
 
+RUN rm -r xs
 COPY ./deployment-mongod/docker-entrypoint.sh /usr/local/bin/
 ENTRYPOINT ["docker-entrypoint.sh"]
 
