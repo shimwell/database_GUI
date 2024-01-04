@@ -8,7 +8,7 @@
     "downloadbutton": "^1.0.0",
     "js-file-download": "^0.4.4",
     "nw-react-slider": "^2.0.1",
-    "plotly.js": "^1.41.2",
+    "plotly.js": "^2.25.2",
     "rc-slider": "^8.6.3",
     "react": "^16.5.2",
     "react-bootstrap": "^0.32.4",
